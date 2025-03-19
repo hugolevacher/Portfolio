@@ -17,7 +17,7 @@ export class HomeComponent {
     { name: 'CSS', logo: 'assets/css-icon.svg' },
     { name: 'SQL', logo: 'assets/sql-icon.svg' },
     { name: 'Angular', logo: 'assets/angular-icon.svg' },
-    { name: '.NET', logo: 'assets/microsoft-dot-net-icon.svg' },
+    { name: 'ASP.NET Core', logo: 'assets/microsoft-dot-net-icon.svg' },
     { name: 'Git', logo: 'assets/git-icon.svg' },
   ];
 }

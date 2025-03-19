@@ -4,10 +4,14 @@
       <a href="#" routerLink="/">Hugo Levacher's portfolio</a>
     </div>
     <ul class="nav-links">
-      <li><a href="#aboutme" (click)="scrollToSection($event, 'aboutme')">About Me</a></li>
-      <li><a href="#skills" (click)="scrollToSection($event, 'skills')">Skills</a></li>
-      <li><a href="#projects" (click)="scrollToSection($event, 'projects')">Projects</a></li>
-      <li><a href="#contact" (click)="scrollToSection($event, 'contact')">Contact</a></li>
+      <li><a href="#aboutme" (click)="scrollToSection($event, 'aboutme')"
+          [class.active]="currentSection === 'aboutme'">About Me</a></li>
+      <li><a href="#skills" (click)="scrollToSection($event, 'skills')"
+          [class.active]="currentSection === 'skills'">Skills</a></li>
+      <li><a href="#projects" (click)="scrollToSection($event, 'projects')"
+          [class.active]="currentSection === 'projects'">Projects</a></li>
+      <li><a href="#contact" (click)="scrollToSection($event, 'contact')"
+          [class.active]="currentSection === 'contact'">Contact</a></li>
     </ul>
   </nav>
 </header>
