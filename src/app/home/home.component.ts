@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { routes } from '../app.routes';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -19,5 +21,26 @@ export class HomeComponent {
     { name: 'Angular', logo: 'assets/angular-icon.svg' },
     { name: 'ASP.NET Core', logo: 'assets/microsoft-dot-net-icon.svg' },
     { name: 'Git', logo: 'assets/git-icon.svg' },
+  ];
+
+  projects = [
+    {
+      title: 'choculaterie.com',
+      image: 'assets/choculaterie.PNG',
+      description: 'An online space where users can publish and download Minecraft creations.',
+      route: 'choculaterie'
+    },
+    {
+      title: 'Math game',
+      image: 'assets/math-game.PNG',
+      description: 'A fun and interactive math game for kids to learn basic arithmetic.',
+      route: 'mathgame'
+    },
+    {
+      title: 'Secret message',
+      image: 'assets/secret-messages.PNG',
+      description: 'An app that allows users to encrypt and decrypt secret messages using AES encryption.',
+      route: 'secretmessage'
+    }
   ];
 }
