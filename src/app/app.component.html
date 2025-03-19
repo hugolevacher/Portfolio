@@ -1,13 +1,13 @@
 <header>
   <nav class="navbar">
     <div class="logo">
-      <a href="#"> My Portfolio</a>
+      <a href="#" routerLink="/">Hugo Levacher's portfolio</a>
     </div>
     <ul class="nav-links">
-      <li><a href="#aboutme">About me</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#aboutme" (click)="scrollToSection($event, 'aboutme')">About Me</a></li>
+      <li><a href="#skills" (click)="scrollToSection($event, 'skills')">Skills</a></li>
+      <li><a href="#projects" (click)="scrollToSection($event, 'projects')">Projects</a></li>
+      <li><a href="#contact" (click)="scrollToSection($event, 'contact')">Contact</a></li>
     </ul>
   </nav>
 </header>

@@ -1,0 +1,52 @@
+<section id="aboutme" class="about-section">
+    <div class="card">
+        <h1>About Me</h1>
+        <div class="social-icons">
+            <a href="https://github.com/hugolevacher" target="_blank" aria-label="GitHub">
+                <img src="assets/github-icon.svg" alt="GitHub" />
+            </a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" aria-label="LinkedIn">
+                <img src="assets/linkedin-icon.svg" alt="LinkedIn" />
+            </a>
+        </div>
+        <p>
+            Hi, I'm Hugo Levacher, a student and aspiring developer with a passion for web development. While web
+            development is my main focus, I'm always eager to explore new areas in programming. Whether it's diving into
+            mobile apps, backend systems, or even game development, I'm open and excited to keep learning and growing as
+            a developer.
+        </p>
+        <p> I love programming because it gives me the opportunity to turn my ideas into real products that
+            I can share with the world. My goal is to keep expanding my skills, take on new challenges,
+            and never stop improving.</p>
+    </div>
+</section>
+
+<section id="skills" class="skills-section">
+    <div class="card">
+        <h1>Skills</h1>
+        <div class="skills-grid">
+            <div class="skill-card" *ngFor="let skill of skills">
+                <img [src]="skill.logo" [alt]="skill.name" />
+                <p>{{ skill.name }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <div class="card">
+        <h1>Contact Me</h1>
+        <p>If you'd like to get in touch, feel free to reach out via email or phone!</p>
+        <div class="contact-info">
+            <a href="mailto:hugolevacher13@gmail.com" class="contact-link" aria-label="Email">
+                <img src="assets/email-icon.svg" alt="Email" />
+                <span>hugolevacher13&#64;gmail.com</span>
+            </a>
+            <a href="tel:+14384935557" class="contact-link" aria-label="Email">
+                <img src="assets/phone-icon.svg" alt="Phone" />
+                <span>(438) 493-5557</span>
+            </a>
+        </div>
+
+    </div>
+</section>
