@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,9 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'Portfolio';
   currentSection: string = '';
+
+  constructor(private router: Router) { }
+
   @HostListener('window:scroll', [])
   onScroll(): void {
     const sections = document.querySelectorAll('section');
@@ -27,6 +30,16 @@ export class AppComponent {
 
   scrollToSection(event: Event, sectionId: string): void {
     event.preventDefault();
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']).then(() => {
+        this.scrollToElement(sectionId);
+      });
+    } else {
+      this.scrollToElement(sectionId);
+    }
+  }
+
+  private scrollToElement(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
