@@ -51,24 +51,6 @@
     line-height: 1.6;
 }
 
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1rem 0;
-}
-
-.social-icons a img {
-    width: 32px;
-    height: 32px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.social-icons a img:hover {
-    transform: scale(1.1);
-    opacity: 0.8;
-}
-
 .skills-section {
     display: flex;
     justify-content: center;
