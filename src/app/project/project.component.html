@@ -6,12 +6,12 @@
         <img *ngIf="!project.video" [src]="project.image" [alt]="project.title" />
     </div>
 
-    <p *ngIf="project.projectURL">
-        Test project at <a [href]="project.projectURL" target="_blank">{{ project.projectURL }}</a>
+    <p *ngIf="project.projectURL" translate>
+        project.test <a [href]="project.projectURL" target="_blank">{{ project.projectURL }}</a>
     </p>
 
-    <p *ngIf="project.githubRepo">
-        Source code at <a [href]="project.githubRepo" target="_blank">{{ project.githubRepo }}</a>
+    <p *ngIf="project.githubRepo" translate>
+        project.code <a [href]="project.githubRepo" target="_blank">{{ project.githubRepo }}</a>
     </p>
 
     <div class="project-text">

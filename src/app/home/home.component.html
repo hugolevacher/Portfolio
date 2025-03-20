@@ -4,14 +4,14 @@
 
 <section id="hero" class="hero-section">
     <div class="hero-content">
-        <h1>Hi, I'm Hugo</h1>
-        <p>Developer</p>
+        <h1 translate>home.hi</h1>
+        <p translate>home.job</p>
     </div>
 </section>
 
 <section id="aboutme" class="about-section">
     <div class="card">
-        <h1>About Me</h1>
+        <h1 translate>home.aboutme</h1>
         <div class="social-icons">
             <a href="https://github.com/hugolevacher" target="_blank" aria-label="GitHub">
                 <img src="assets/github-icon.svg" alt="GitHub" />
@@ -20,21 +20,14 @@
                 <img src="assets/linkedin-icon.svg" alt="LinkedIn" />
             </a>
         </div>
-        <p>
-            Hi, I'm Hugo Levacher, a student and aspiring developer with a passion for web development. While web
-            development is my main focus, I'm always eager to explore new areas in programming. Whether it's diving into
-            mobile apps, backend systems, or even game development, I'm open and excited to keep learning and growing as
-            a developer.
-        </p>
-        <p> I love programming because it gives me the opportunity to turn my ideas into real products that
-            I can share with the world. My goal is to keep expanding my skills, take on new challenges,
-            and never stop improving.</p>
+        <p translate>home.about1</p>
+        <p translate>home.about2</p>
     </div>
 </section>
 
 <section id="skills" class="skills-section">
     <div class="card">
-        <h1>Skills</h1>
+        <h1 translate>home.skills</h1>
         <div class="skills-grid">
             <div class="skill-card" *ngFor="let skill of skills">
                 <img [src]="skill.logo" [alt]="skill.name" />
@@ -46,13 +39,13 @@
 
 <section id="projects" class="projects-section">
     <div class="card">
-        <h1>Projects</h1>
+        <h1 translate>home.projects</h1>
         <div class="projects-grid">
             <div class="project-card" *ngFor="let project of projects" [routerLink]="['/project', project.route]">
                 <img [src]="project.image" [alt]="project.title" />
                 <h2>{{ project.title }}</h2>
                 <p>{{ project.description }}</p>
-                <a class="learn-more-button">Learn more➨</a>
+                <a class="learn-more-button" translate>home.learnmore</a>
             </div>
         </div>
     </div>
@@ -60,8 +53,8 @@
 
 <section id="contact" class="contact-section">
     <div class="card">
-        <h1>Contact Me</h1>
-        <p>If you'd like to get in touch, feel free to reach out via email or phone!</p>
+        <h1 translate>home.contact</h1>
+        <p translate>home.reachout</p>
         <div class="contact-info">
             <a href="mailto:hugolevacher13@gmail.com" class="contact-link" aria-label="Email">
                 <img src="assets/email-icon.svg" alt="Email" />
@@ -71,17 +64,17 @@
                 <img src="assets/phone-icon.svg" alt="Phone" />
                 <span>(438) 493-5557</span>
             </a>
-            <a href="assets/CV_Hugo_Levacher_2025.pdf" target="_blank" class="contact-link" aria-label="Resume">
+            <a href="{{'home.resumelink'|translate}}" target="_blank" class="contact-link" aria-label="Resume">
                 <img src="assets/curriculum-vitae.svg" alt="Phone" />
-                <span>My resume</span>
+                <span translate>home.resume</span>
             </a>
             <a href="https://github.com/hugolevacher" target="_blank" class="contact-link" aria-label="GitHub">
                 <img src="assets/github-icon.svg" alt="GitHub" />
-                <span>My GitHub</span>
+                <span translate>home.github</span>
             </a>
             <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-link" aria-label="LinkedIn">
                 <img src="assets/linkedin-icon.svg" alt="LinkedIn" />
-                <span>My LinkedIn</span>
+                <span translate>home.linkedin</span>
             </a>
         </div>
 

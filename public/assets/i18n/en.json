@@ -1,0 +1,28 @@
+{
+    "app": {
+        "aboutme": "About Me",
+        "skills": "Skills",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "home": {
+        "hi": "Hi, I'm Hugo",
+        "job": "Developer",
+        "aboutme": "About Me",
+        "skills": "Skills",
+        "projects": "Projects",
+        "contact": "Contact Me",
+        "about1": "Hi, I'm Hugo Levacher, a student and aspiring developer with a passion for web development. While web development is my main focus, I'm also interested in other areas of programming. Mobile apps, backend systems, or game development, I'm open and excited to continue learning and growing as a developer.",
+        "about2": "I love programming because it gives me the opportunity to turn my ideas into real products that I can share others. My goal is to keep expanding my skills, take on new challenges, and never stop improving.",
+        "learnmore": "Learn More➨",
+        "reachout": "If you'd like to get in touch, feel free to reach out via email or phone!",
+        "resume": "My resume",
+        "resumelink": "assets/CV_Hugo_Levacher_2025_en.pdf",
+        "github": "My Github",
+        "linkedin": "My LinkedIn"
+    },
+    "project": {
+        "test": "Test project at",
+        "code": "Source code at"
+    }
+}

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })

@@ -1,0 +1,28 @@
+{
+    "app": {
+        "aboutme": "À propos",
+        "skills": "Compétences",
+        "projects": "Projets",
+        "contact": "Contact"
+    },
+    "home": {
+        "hi": "Salut, je suis Hugo",
+        "job": "Développeur",
+        "aboutme": "À propos",
+        "skills": "Compétences",
+        "projects": "Projets",
+        "contact": "Contactez-Moi",
+        "about1": "Bonjour, je m'appelle Hugo Levacher, un étudiant et futur développeur passionné par le développement web. Même si le développement web est ma principale préoccupation, je m'intéresse également à d'autres domaines de la programmation. Applications mobiles, systèmes back-end ou développement de jeux, je suis ouvert et intéressé par l'idée de continuer à apprendre et à évoluer en tant que développeur.",
+        "about2": "J'adore programmer car cela me permet de concrétiser mes idées et de les partager avec les autres. Mon objectif est de développer mes compétences, de relever de nouveaux défis et de m'améliorer continuellement.",
+        "learnmore": "En apprendre plus➨",
+        "reachout": "N'hésitez pas à me contacter par e-mail ou par téléphone!",
+        "resume": "Mon C.V.",
+        "resumelink": "assets/CV_Hugo_Levacher_2025_fr.pdf",
+        "github": "Mon Github",
+        "linkedin": "Mon LinkedIn"
+    },
+    "project": {
+        "test": "Tester le projet à",
+        "code": "Code source à"
+    }
+}
