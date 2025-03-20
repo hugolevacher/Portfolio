@@ -1,17 +1,23 @@
 import { Component, HostListener } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule],
+  imports: [RouterOutlet, RouterModule, TranslateModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Portfolio';
   currentSection: string = '';
+  language: string = 'en';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public translator: TranslateService) {
+    translator.setDefaultLang(this.language);
+    translator.use(this.language)
+  }
 
   @HostListener('window:scroll', [])
   onScroll(): void {
@@ -44,5 +50,14 @@ export class AppComponent {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+
+  toggleLanguage() {
+    if (this.language === 'en') {
+      this.language = 'fr'
+    } else {
+      this.language = 'en'
+    }
+    this.translator.use(this.language);
   }
 }

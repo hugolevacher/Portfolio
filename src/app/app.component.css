@@ -1,4 +1,4 @@
-nav>ul {
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -14,7 +14,8 @@ header {
     border-radius: 8px;
 }
 
-.navbar {
+.navbar,
+#rightHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,4 +47,25 @@ header {
 
 .nav-links a.active {
     color: #00e1ff;
+}
+
+.language-switcher {
+    margin-left: 1rem;
+}
+
+.language-switcher button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #007c91;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.language-switcher button:hover {
+    background-color: #00bcd4;
+    transform: translateY(-2px);
 }
