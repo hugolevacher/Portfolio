@@ -1,0 +1,58 @@
+{
+    "app": {
+        "aboutme": "À propos",
+        "skills": "Compétences",
+        "projects": "Projets",
+        "contact": "Contact"
+    },
+    "home": {
+        "hi": "Bonjour, je suis Hugo",
+        "job": "Développeur",
+        "aboutme": "À propos",
+        "skills": "Compétences",
+        "projects": "Projets",
+        "contact": "Contactez-Moi",
+        "about1": "Bonjour, je m'appelle Hugo Levacher, un étudiant et futur développeur passionné par le développement web. Même si le développement web est ma principale préoccupation, je m'intéresse également à d'autres domaines de la programmation. Applications mobiles, systèmes back-end ou développement de jeux, je suis ouvert et intéressé par l'idée de continuer à apprendre et à évoluer en tant que développeur.",
+        "about2": "J'adore programmer car cela me permet de concrétiser mes idées et de les partager avec les autres. Mon objectif est de développer mes compétences, de relever de nouveaux défis et de m'améliorer continuellement.",
+        "learnmore": "En apprendre plus➨",
+        "reachout": "N'hésitez pas à me contacter par e-mail ou par téléphone!",
+        "resume": "Mon C.V.",
+        "resumelink": "assets/CV_Hugo_Levacher_2025_fr.pdf",
+        "github": "Mon Github",
+        "linkedin": "Mon LinkedIn"
+    },
+    "project": {
+        "test": "Tester le projet à",
+        "code": "Code source à"
+    },
+    "data": {
+        "projects": {
+            "choculaterie": {
+                "title": "choculaterie.com",
+                "description": "Un espace en ligne où les utilisateurs peuvent publier et télécharger des créations Minecraft.",
+                "text": [
+                    "La Choculaterie est un espace où les joueurs de Minecraft peuvent partager leurs créations avec d'autres utilisateurs. Le site web permet aux utilisateurs de publier dès la création de leur compte et de télécharger en tout temps. Les utilisateurs inscrits peuvent également ajouter des créations et des utilisateurs à leurs favoris pour rester à avec leurs créateurs préférés.",
+                    "Ce site web a été réalisé en collaboration avec un ami. J'étais principalement en charge du développement back-end avec JavaScript, C#, ASP .NET et Microsoft Entity Framework. J'ai créé les contrôleurs et les classes nécessaires à l'inscription des utilisateurs, ainsi qu'aux requêtes vers le serveur pour obtenir les informations correctes.",
+                    "En réalisant ce projet, j'ai appris à gérer les données des utilisateurs de façon sécuritaire et à optimiser les requêtes pour minimiser la charge du serveur et améliorer les performances."
+                ]
+            },
+            "mathgame": {
+                "title": "Jeu de math",
+                "description": "Un jeu de math amusant pour que les enfants apprennent l'arithmétique de base.",
+                "text": [
+                    "Ce site web est un jeu de math simple pour les enfants, leur permettant d'apprendre l'arithmétique de base (+-X÷). Il propose trois niveaux de difficulté et deux modes de jeu : le mode infini, où vous essayez de voir jusqu'où vous pouvez aller, et le mode apprentissage, où vous choisissez le nombre de questions et essayez d'obtenir le meilleur score en %.",
+                    "Ce site web a été créé pour mon cousin qui avait des difficultés en mathématiques. Le jeu l'a motivé à travailler, je suis donc fier que mon projet l'ait aidé.",
+                    "Ce projet a été réalisé en utilisant uniquement JavaScript, HTML et CSS."
+                ]
+            },
+            "secretmessage": {
+                "title": "Message secret",
+                "description": "Une application qui permet aux utilisateurs de crypter et de décrypter des messages secrets à l'aide du cryptage AES.",
+                "text": [
+                    "J'ai créé ce projet de cryptage AES pour envoyer des messages amusants à mes amis et les forcer à travailler pour les lire. C'est tout.",
+                    "Ce projet a été réalisé en C# et .NET Core. Le chiffrement utilise un salt aléatoire à chaque fois, de sorte qu'un même message ne retourne pas la même chaîne de chiffrement. Cela m'a permis de rechercher et de comprendre différentes méthodes de chiffrement et j'ai découvert que le monde de la cryptographie était plus intéressant que je ne le pensais."
+                ]
+            }
+        }
+    }
+}
