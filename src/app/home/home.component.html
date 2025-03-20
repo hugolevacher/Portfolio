@@ -1,3 +1,7 @@
+<div class="navigation-arrow top-arrow" *ngIf="hasPreviousSection" (click)="scrollToPreviousSection()">
+    <div class="triangle-up"></div>
+</div>
+
 <section id="hero" class="hero-section">
     <div class="hero-content">
         <h1>Hi, I'm Hugo</h1>
@@ -83,3 +87,7 @@
 
     </div>
 </section>
+
+<div class="navigation-arrow bottom-arrow" *ngIf="hasNextSection" (click)="scrollToNextSection()">
+    <div class="triangle-down"></div>
+</div>

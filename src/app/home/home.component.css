@@ -233,14 +233,12 @@
 .project-card h2 {
     font-size: 1.5rem;
     color: #007c91;
-    /* Darker cyan */
     margin-bottom: 0.5rem;
 }
 
 .project-card p {
     font-size: 1rem;
     color: #333;
-    /* Dark text for readability */
     line-height: 1.4;
 }
 
@@ -260,4 +258,54 @@
 .learn-more-button:hover {
     background-color: #00bcd4;
     transform: translateY(-2px);
+}
+
+.navigation-arrow {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.top-arrow {
+    top: 5em;
+}
+
+.top-arrow:hover {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0) 100%);
+}
+
+.bottom-arrow {
+    bottom: 0;
+}
+
+.bottom-arrow:hover {
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0) 100%);
+}
+
+
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid white;
+}
+
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid white;
 }
