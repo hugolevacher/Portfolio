@@ -1,5 +1,5 @@
 <div class="project-detail" *ngIf="project">
-    <h1>{{ project.title }}</h1>
+    <h1>{{ project.titlekey|translate }}</h1>
 
     <div class="media">
         <video *ngIf="project.video" [src]="project.video" controls></video>
@@ -15,6 +15,6 @@
     </p>
 
     <div class="project-text">
-        <p *ngFor="let paragraph of project.text">{{ paragraph }}</p>
+        <p *ngFor="let paragraph of (project.textkey|translate)">{{ paragraph }}</p>
     </div>
 </div>
