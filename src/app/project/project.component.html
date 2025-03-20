@@ -1,1 +1,20 @@
-<p>project works!</p>
+<div class="project-detail" *ngIf="project">
+    <h1>{{ project.title }}</h1>
+
+    <div class="media">
+        <video *ngIf="project.video" [src]="project.video" controls></video>
+        <img *ngIf="!project.video" [src]="project.image" [alt]="project.title" />
+    </div>
+
+    <p *ngIf="project.projectURL">
+        Test project at <a [href]="project.projectURL" target="_blank">{{ project.projectURL }}</a>
+    </p>
+
+    <p *ngIf="project.githubRepo">
+        Source code at <a [href]="project.githubRepo" target="_blank">{{ project.githubRepo }}</a>
+    </p>
+
+    <div class="project-text">
+        <p *ngFor="let paragraph of project.text">{{ paragraph }}</p>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
 import { DataService } from '../services/data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-project',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
