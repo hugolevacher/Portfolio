@@ -12,7 +12,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'Portfolio';
   currentSection: string = '';
-  language: string = 'en';
+  language: string = 'fr';
 
   constructor(private router: Router, public translator: TranslateService) {
     translator.setDefaultLang(this.language);
