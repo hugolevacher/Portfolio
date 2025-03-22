@@ -31,7 +31,7 @@
                 "title": "choculaterie.com",
                 "description": "Un espace en ligne où les utilisateurs peuvent publier et télécharger des créations Minecraft.",
                 "text": [
-                    "La Choculaterie est un espace où les joueurs de Minecraft peuvent partager leurs créations avec d'autres utilisateurs. Le site web permet aux utilisateurs de publier dès la création de leur compte et de télécharger en tout temps. Les utilisateurs inscrits peuvent également ajouter des créations et des utilisateurs à leurs favoris pour rester à avec leurs créateurs préférés.",
+                    "La Choculaterie est un espace où les joueurs de Minecraft peuvent partager leurs créations avec d'autres utilisateurs. Le site web permet aux utilisateurs de publier dès la création de leur compte et de télécharger en tout temps. Les utilisateurs inscrits peuvent également ajouter des créations et des utilisateurs à leurs favoris pour rester à jour avec leurs créateurs préférés.",
                     "Ce site web a été réalisé en collaboration avec un ami. J'étais principalement en charge du développement back-end avec JavaScript, C#, ASP .NET et Microsoft Entity Framework. J'ai créé les contrôleurs et les classes nécessaires à l'inscription des utilisateurs, ainsi qu'aux requêtes vers le serveur pour obtenir les informations correctes.",
                     "En réalisant ce projet, j'ai appris à gérer les données des utilisateurs de façon sécuritaire et à optimiser les requêtes pour minimiser la charge du serveur et améliorer les performances."
                 ]
