@@ -14,8 +14,8 @@
         <li><a href="#contact" (click)="scrollToSection($event, 'contact')"
             [class.active]="currentSection === 'contact'" translate>app.contact</a></li>
       </ul>
-      <button class="hamburger" (click)="toggleMenu()">
-        ☰
+      <button class="hamburger" (click)="toggleMenu()" [ngClass]="{'rotate':isRotating}">
+        {{ menuOpen ? '✖' : '☰' }}
       </button>
       <div class="language-switcher">
         <button (click)="toggleLanguage()">{{ language === 'en' ? 'fr' : 'en' }}</button>

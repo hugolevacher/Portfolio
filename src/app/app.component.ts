@@ -6,7 +6,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule, TranslateModule, FormsModule,CommonModule],
+  imports: [RouterOutlet, RouterModule, TranslateModule, FormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,6 +16,7 @@ export class AppComponent {
   language: string = 'en';
   menuOpen = false;
   isSmallScreen = false;
+  isRotating = false;
 
   constructor(private router: Router, public translator: TranslateService) {
     const browserLang = translator.getBrowserLang();
@@ -71,6 +72,10 @@ export class AppComponent {
   }
 
   toggleMenu() {
+    this.isRotating = true;
+    setTimeout(() => {
+      this.isRotating = false;
+    }, 500);
     this.menuOpen = !this.menuOpen;
   }
 

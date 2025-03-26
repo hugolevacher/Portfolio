@@ -79,8 +79,8 @@ header {
         flex-direction: column;
         gap: 0.5rem;
         position: absolute;
-        top: 100%;
-        right: 5em;
+        top: 2em;
+        right: 4em;
         background-color: white;
         border-radius: 8px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -89,10 +89,25 @@ header {
     }
 
     .nav-links.open {
-      display: flex;
+        display: flex;
     }
-    
+
     .hamburger {
-      display: block;
+        display: block;
+        font-weight: bolder;
+    }
+
+    .rotate {
+        animation: rotate 0.5s ease forwards;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
 }
