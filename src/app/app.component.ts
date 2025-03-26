@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
@@ -5,7 +6,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule, TranslateModule, FormsModule],
+  imports: [RouterOutlet, RouterModule, TranslateModule, FormsModule,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -13,12 +14,18 @@ export class AppComponent {
   title = 'Portfolio';
   currentSection: string = '';
   language: string = 'en';
+  menuOpen = false;
+  isSmallScreen = false;
 
   constructor(private router: Router, public translator: TranslateService) {
     const browserLang = translator.getBrowserLang();
     this.language = browserLang && ['en', 'fr'].includes(browserLang) ? browserLang : 'en';
     translator.setDefaultLang(this.language);
     translator.use(this.language)
+  }
+
+  ngOnInit() {
+    this.isSmallScreen = window.innerWidth <= 768;
   }
 
   @HostListener('window:scroll', [])
@@ -61,5 +68,17 @@ export class AppComponent {
       this.language = 'en'
     }
     this.translator.use(this.language);
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.isSmallScreen = window.innerWidth <= 768;
+    if (!this.isSmallScreen) {
+      this.menuOpen = false;
+    }
   }
 }

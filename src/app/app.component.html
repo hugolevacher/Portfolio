@@ -4,7 +4,7 @@
       <a href="#hero" (click)="scrollToSection($event, 'hero')">Hugo Levacher</a>
     </div>
     <div id="rightHeader">
-      <ul class="nav-links">
+      <ul class="nav-links" [ngClass]="{'open':menuOpen && isSmallScreen}">
         <li><a href="#aboutme" (click)="scrollToSection($event, 'aboutme')"
             [class.active]="currentSection === 'aboutme'" translate>app.aboutme</a></li>
         <li><a href="#skills" (click)="scrollToSection($event, 'skills')" [class.active]="currentSection === 'skills'"
@@ -14,6 +14,9 @@
         <li><a href="#contact" (click)="scrollToSection($event, 'contact')"
             [class.active]="currentSection === 'contact'" translate>app.contact</a></li>
       </ul>
+      <button class="hamburger" (click)="toggleMenu()">
+        ☰
+      </button>
       <div class="language-switcher">
         <button (click)="toggleLanguage()">{{ language === 'en' ? 'fr' : 'en' }}</button>
       </div>
