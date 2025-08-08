@@ -1,0 +1,140 @@
+.portal-status-container {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem auto;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 800px;
+}
+
+.status-box {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 2rem;
+    min-width: 250px;
+    text-align: center;
+    border: 1px solid #00bcd4;
+}
+
+.status-box strong {
+    color: #00bcd4;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.status-box small {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.status-box [style*="color:red"] {
+    color: #e53935 !important;
+    font-weight: bold;
+}
+
+.portal-login-section {
+    width: fit-content;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.welcome-form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+}
+
+.welcome-form span {
+    color: #00bcd4;
+    font-weight: bold;
+}
+
+.portal-login-section input[type="text"],
+.portal-login-section input[type="password"] {
+    padding: 0.5rem;
+    border: 1px solid #b2ebf2;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background: #e0f7fa;
+    color: #333;
+    transition: border-color 0.3s ease;
+    width: 120px;
+    margin: 0;
+}
+
+.portal-login-section input:focus {
+    border-color: #00bcd4;
+    outline: none;
+}
+
+.portal-login-section button[type="submit"],
+.portal-login-section button[type="button"] {
+    background-color: #007c91;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.portal-login-section button[type="submit"]:hover,
+.portal-login-section button[type="button"]:hover {
+    background-color: #00bcd4;
+    transform: translateY(-1px);
+}
+
+.error-message {
+    color: #e53935;
+    font-weight: bold;
+    font-size: 0.8rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .portal-status-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .status-box {
+        width: 100%;
+        max-width: 350px;
+        min-width: auto;
+    }
+
+    .login-form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .portal-login-section input[type="text"],
+    .portal-login-section input[type="password"] {
+        width: 150px;
+    }
+
+    .welcome-form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

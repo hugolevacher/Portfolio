@@ -1,0 +1,31 @@
+<div class="portal-status-container">
+    <div class="status-box">
+        <strong>API Status</strong><br>
+        <span *ngIf="apiStatus">{{ apiStatus.status }}<br>
+            <small *ngIf="apiStatus.timestamp">{{ apiStatus.timestamp }}</small>
+            <span *ngIf="apiStatus.error" style="color:red;">{{ apiStatus.error }}</span>
+        </span>
+        <span *ngIf="!apiStatus">Loading...</span>
+    </div>
+    <div class="status-box">
+        <strong>DB Status</strong><br>
+        <span *ngIf="dbStatus">{{ dbStatus.status }}<br>
+            <small *ngIf="dbStatus.timestamp">{{ dbStatus.timestamp }}</small>
+            <span *ngIf="dbStatus.error" style="color:red;">{{ dbStatus.error }}</span>
+        </span>
+        <span *ngIf="!dbStatus">Loading...</span>
+    </div>
+</div>
+
+<div class="portal-login-section">
+    <form *ngIf="!loginSuccess" (ngSubmit)="login()" #loginForm="ngForm" class="login-form">
+        <input name="username" [(ngModel)]="username" type="text" placeholder="Username" required>
+        <input name="password" [(ngModel)]="password" type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <div *ngIf="loginError" class="error-message">{{ loginError }}</div>
+    </form>
+    <div *ngIf="loginSuccess" class="welcome-form">
+        <span>Welcome, {{ userData?.user?.username }}</span>
+        <button type="button" (click)="logout()">Logout</button>
+    </div>
+</div>
