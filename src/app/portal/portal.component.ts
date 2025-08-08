@@ -4,10 +4,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
+import { SkillCreateComponent } from '../popups/skill-create/skill-create.component';
+import { SkillEditComponent } from '../popups/skill-edit/skill-edit.component';
+import { SkillDeleteComponent } from '../popups/skill-delete/skill-delete.component';
 
 @Component({
   selector: 'app-portal',
-  imports: [CommonModule, RouterModule, TranslateModule, FormsModule],
+  imports: [CommonModule, RouterModule, TranslateModule, FormsModule, SkillCreateComponent, SkillEditComponent, SkillDeleteComponent],
   templateUrl: './portal.component.html',
   styleUrl: './portal.component.css'
 })
@@ -20,7 +23,16 @@ export class PortalComponent implements OnInit {
   username = '';
   password = '';
 
-  constructor(private api: ApiService) {
+  skills: any[] = [];
+  skillsLoading = false;
+  skillsError: string | null = null;
+
+  showSkillCreate = false;
+  showSkillEdit = false;
+  showSkillDelete = false;
+  selectedSkill: any = null;
+
+  constructor(public api: ApiService) {
     this.loadSession();
   }
 
@@ -35,6 +47,20 @@ export class PortalComponent implements OnInit {
       this.dbStatus = await this.api.getDbStatus();
     } catch (error: any) {
       this.dbStatus = { status: 'DB error', error: error?.error?.message || error?.message };
+    }
+
+    await this.loadSkills();
+  }
+
+  async loadSkills() {
+    this.skillsLoading = true;
+    this.skillsError = null;
+    try {
+      this.skills = await this.api.getSkills();
+    } catch (error: any) {
+      this.skillsError = error?.error?.message || error?.message || 'Failed to load skills';
+    } finally {
+      this.skillsLoading = false;
     }
   }
 
@@ -63,5 +89,47 @@ export class PortalComponent implements OnInit {
       this.userData = JSON.parse(data);
       this.loginSuccess = true;
     }
+  }
+
+  get isLoggedIn(): boolean {
+    return this.api.isLoggedIn();
+  }
+
+  openCreateSkill() {
+    this.showSkillCreate = true;
+  }
+
+  openEditSkill(skill: any) {
+    this.selectedSkill = skill;
+    this.showSkillEdit = true;
+  }
+
+  openDeleteSkill(skill: any) {
+    this.selectedSkill = skill;
+    this.showSkillDelete = true;
+  }
+
+  onSkillCreated() {
+    this.showSkillCreate = false;
+    this.loadSkills();
+  }
+
+  onSkillUpdated() {
+    this.showSkillEdit = false;
+    this.selectedSkill = null;
+    this.loadSkills();
+  }
+
+  onSkillDeleted() {
+    this.showSkillDelete = false;
+    this.selectedSkill = null;
+    this.loadSkills();
+  }
+
+  onPopupClosed() {
+    this.showSkillCreate = false;
+    this.showSkillEdit = false;
+    this.showSkillDelete = false;
+    this.selectedSkill = null;
   }
 }

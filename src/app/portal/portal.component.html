@@ -29,3 +29,59 @@
         <button type="button" (click)="logout()">Logout</button>
     </div>
 </div>
+
+<div class="skills-section">
+    <div class="skills-header">
+        <h2>Skills Management</h2>
+        <button *ngIf="isLoggedIn" class="btn-create" (click)="openCreateSkill()">Create Skill</button>
+    </div>
+
+    <div *ngIf="skillsLoading" class="loading">Loading skills...</div>
+    <div *ngIf="skillsError" class="error-message">{{ skillsError }}</div>
+
+    <div *ngIf="!skillsLoading && !skillsError" class="skills-table-container">
+        <table class="skills-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Order</th>
+                    <th>Image</th>
+                    <th *ngIf="isLoggedIn">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let skill of skills" class="skill-row">
+                    <td>{{ skill.id }}</td>
+                    <td>{{ skill.name }}</td>
+                    <td>{{ skill.order }}</td>
+                    <td>
+                        <img *ngIf="skill.filename" [src]="api.getImageUrl(skill.filename)" [alt]="skill.name"
+                            class="skill-image">
+                        <span *ngIf="!skill.filename">No image</span>
+                    </td>
+                    <td *ngIf="isLoggedIn" class="actions">
+                        <button class="btn-edit" (click)="openEditSkill(skill)">Edit</button>
+                        <button class="btn-delete" (click)="openDeleteSkill(skill)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="skills.length === 0" class="no-skills">
+            No skills found.
+        </div>
+    </div>
+</div>
+
+<!-- Popups -->
+<app-skill-create *ngIf="showSkillCreate" (close)="onPopupClosed()" (skillCreated)="onSkillCreated()">
+</app-skill-create>
+
+<app-skill-edit *ngIf="showSkillEdit && selectedSkill" [skill]="selectedSkill" (close)="onPopupClosed()"
+    (skillUpdated)="onSkillUpdated()">
+</app-skill-edit>
+
+<app-skill-delete *ngIf="showSkillDelete && selectedSkill" [skill]="selectedSkill" (close)="onPopupClosed()"
+    (skillDeleted)="onSkillDeleted()">
+</app-skill-delete>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 
 const API_DOMAIN = 'http://localhost:3000';
@@ -9,6 +9,19 @@ const API_DOMAIN = 'http://localhost:3000';
 })
 export class ApiService {
   constructor(private http: HttpClient) { }
+
+  private getAuthHeaders(): HttpHeaders {
+    const userData = sessionStorage.getItem('userData');
+    if (userData) {
+      const token = JSON.parse(userData).access_token;
+      return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    }
+    return new HttpHeaders();
+  }
+
+  getImageUrl(filename: string): string {
+    return `${API_DOMAIN}/files/${filename}`;
+  }
 
   async getApiStatus(): Promise<any> {
     try {
@@ -34,5 +47,63 @@ export class ApiService {
     } catch (error) {
       throw error;
     }
+  }
+
+  async getSkills(): Promise<any[]> {
+    try {
+      return await lastValueFrom(this.http.get<any[]>(`${API_DOMAIN}/skills`));
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async createSkill(name: string, order: number, file: File): Promise<any> {
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('order', order.toString());
+      formData.append('file', file);
+
+      return await lastValueFrom(
+        this.http.post<any>(`${API_DOMAIN}/skills`, formData, {
+          headers: this.getAuthHeaders()
+        })
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateSkill(id: number, name?: string, order?: number, file?: File): Promise<any> {
+    try {
+      const formData = new FormData();
+      if (name) formData.append('name', name);
+      if (order !== undefined) formData.append('order', order.toString());
+      if (file) formData.append('file', file);
+
+      return await lastValueFrom(
+        this.http.put<any>(`${API_DOMAIN}/skills/${id}`, formData, {
+          headers: this.getAuthHeaders()
+        })
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteSkill(id: number): Promise<any> {
+    try {
+      return await lastValueFrom(
+        this.http.delete<any>(`${API_DOMAIN}/skills/${id}`, {
+          headers: this.getAuthHeaders()
+        })
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  isLoggedIn(): boolean {
+    return !!sessionStorage.getItem('userData');
   }
 }
