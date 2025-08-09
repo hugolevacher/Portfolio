@@ -1,42 +1,46 @@
 <div class="popup-backdrop" (click)="onBackdropClick($event)">
     <div class="popup-container">
         <div class="popup-header">
-            <h2>Edit Skill</h2>
-            <button class="close-btn" (click)="closePopup()">&times;</button>
+            <h2 translate>popup.skills.edit</h2>
+            <button class="close-btn" (click)="closePopup()" translate>popup.common.close</button>
         </div>
 
         <div class="popup-content">
             <form (ngSubmit)="onSubmit()" #skillForm="ngForm">
                 <div class="form-group">
-                    <label for="name">Skill Name</label>
+                    <label for="name" translate>popup.skills.skillname</label>
                     <input type="text" id="name" name="name" [(ngModel)]="name" [disabled]="!isLoggedIn" maxlength="50">
                 </div>
 
                 <div class="form-group">
-                    <label for="order">Order</label>
+                    <label for="order" translate>common.order</label>
                     <input type="number" id="order" name="order" [(ngModel)]="order" [disabled]="!isLoggedIn" min="1"
                         max="999">
                 </div>
 
                 <div class="form-group">
-                    <label for="file">New Logo/Icon (optional)</label>
+                    <label for="file" translate>popup.skills.newlogoicon</label>
                     <input type="file" id="file" name="file" (change)="onFileSelected($event)" [disabled]="!isLoggedIn"
                         accept="image/*,.svg">
-                    <small *ngIf="selectedFile">Selected: {{ selectedFile.name }}</small>
-                    <small *ngIf="!selectedFile && skill?.filename">Current: {{ skill.filename }}</small>
+                    <small *ngIf="selectedFile">{{ 'popup.skills.selected' | translate:{ filename: selectedFile.name }
+                        }}</small>
+                    <small *ngIf="!selectedFile && skill?.filename">{{ 'popup.skills.current' | translate:{ filename:
+                        skill.filename } }}</small>
                 </div>
 
                 <div *ngIf="!isLoggedIn" class="login-warning">
-                    <p>⚠️ You must be logged in to edit skills.</p>
+                    <p translate>popup.skills.loginrequirededit</p>
                 </div>
 
                 <div *ngIf="error" class="error-message">{{ error }}</div>
                 <div *ngIf="success" class="success-message">{{ success }}</div>
 
                 <div class="form-actions">
-                    <button type="button" (click)="closePopup()" class="btn-cancel">Cancel</button>
+                    <button type="button" (click)="closePopup()" class="btn-cancel"
+                        translate>popup.common.cancel</button>
                     <button type="submit" [disabled]="!isLoggedIn || isSubmitting" class="btn-submit">
-                        {{ isSubmitting ? 'Updating...' : 'Update Skill' }}
+                        {{ isSubmitting ? ('popup.skills.updating' | translate) : ('popup.skills.updateskill' |
+                        translate) }}
                     </button>
                 </div>
             </form>

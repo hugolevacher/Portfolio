@@ -1,13 +1,13 @@
 <div class="popup-backdrop" (click)="onBackdropClick($event)">
     <div class="popup-container">
         <div class="popup-header">
-            <h2>Delete Project</h2>
-            <button class="close-btn" (click)="closePopup()">&times;</button>
+            <h2 translate>popup.projects.delete</h2>
+            <button class="close-btn" (click)="closePopup()" translate>popup.common.close</button>
         </div>
 
         <div class="popup-content">
             <div class="delete-confirmation">
-                <p>Are you sure you want to delete this project?</p>
+                <p translate>popup.projects.confirmdelete</p>
                 <div class="project-info">
                     <strong>{{ project?.title || project?.titleEn || project?.titleFr }}</strong>
                     <p class="project-description">{{ project?.description || project?.descriptionEn ||
@@ -17,16 +17,17 @@
                 </div>
 
                 <div *ngIf="!isLoggedIn" class="login-warning">
-                    <p>⚠️ You must be logged in to delete projects.</p>
+                    <p translate>popup.projects.loginrequireddelete</p>
                 </div>
 
                 <div *ngIf="error" class="error-message">{{ error }}</div>
 
                 <div class="form-actions">
-                    <button type="button" (click)="closePopup()" class="btn-cancel">Cancel</button>
+                    <button type="button" (click)="closePopup()" class="btn-cancel"
+                        translate>popup.common.cancel</button>
                     <button type="button" (click)="confirmDelete()" [disabled]="!isLoggedIn || isDeleting"
                         class="btn-delete">
-                        {{ isDeleting ? 'Deleting...' : 'Delete' }}
+                        {{ isDeleting ? ('popup.projects.deleting' | translate) : ('popup.common.delete' | translate) }}
                     </button>
                 </div>
             </div>

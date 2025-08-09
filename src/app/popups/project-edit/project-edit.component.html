@@ -1,15 +1,15 @@
 <div class="popup-backdrop" (click)="onBackdropClick($event)">
     <div class="popup-container">
         <div class="popup-header">
-            <h2>Edit Project</h2>
-            <button class="close-btn" (click)="closePopup()">&times;</button>
+            <h2 translate>popup.projects.edit</h2>
+            <button class="close-btn" (click)="closePopup()" translate>popup.common.close</button>
         </div>
 
         <div class="popup-content">
             <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="order">Order</label>
+                        <label for="order" translate>common.order</label>
                         <input type="number" id="order" name="order" [(ngModel)]="order" [disabled]="!isLoggedIn"
                             min="1" max="999">
                     </div>
@@ -17,12 +17,12 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="titleFr">Title (French)</label>
+                        <label for="titleFr" translate>popup.projects.titlefr</label>
                         <input type="text" id="titleFr" name="titleFr" [(ngModel)]="titleFr" [disabled]="!isLoggedIn"
                             maxlength="100">
                     </div>
                     <div class="form-group">
-                        <label for="titleEn">Title (English)</label>
+                        <label for="titleEn" translate>popup.projects.titleen</label>
                         <input type="text" id="titleEn" name="titleEn" [(ngModel)]="titleEn" [disabled]="!isLoggedIn"
                             maxlength="100">
                     </div>
@@ -30,12 +30,12 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="descriptionFr">Description (French)</label>
+                        <label for="descriptionFr" translate>popup.projects.descriptionfr</label>
                         <textarea id="descriptionFr" name="descriptionFr" [(ngModel)]="descriptionFr"
                             [disabled]="!isLoggedIn" rows="3" maxlength="255"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="descriptionEn">Description (English)</label>
+                        <label for="descriptionEn" translate>popup.projects.descriptionen</label>
                         <textarea id="descriptionEn" name="descriptionEn" [(ngModel)]="descriptionEn"
                             [disabled]="!isLoggedIn" rows="3" maxlength="255"></textarea>
                     </div>
@@ -43,12 +43,12 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="textFr">Text (French)</label>
+                        <label for="textFr" translate>popup.projects.textfr</label>
                         <textarea id="textFr" name="textFr" [(ngModel)]="textFr" [disabled]="!isLoggedIn"
                             rows="4"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="textEn">Text (English)</label>
+                        <label for="textEn" translate>popup.projects.texten</label>
                         <textarea id="textEn" name="textEn" [(ngModel)]="textEn" [disabled]="!isLoggedIn"
                             rows="4"></textarea>
                     </div>
@@ -56,12 +56,12 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="projectUrl">Project URL</label>
+                        <label for="projectUrl" translate>popup.projects.projecturl</label>
                         <input type="url" id="projectUrl" name="projectUrl" [(ngModel)]="projectUrl"
                             [disabled]="!isLoggedIn" placeholder="https://...">
                     </div>
                     <div class="form-group">
-                        <label for="githubUrl">GitHub URL</label>
+                        <label for="githubUrl" translate>popup.projects.githuburl</label>
                         <input type="url" id="githubUrl" name="githubUrl" [(ngModel)]="githubUrl"
                             [disabled]="!isLoggedIn" placeholder="https://github.com/...">
                     </div>
@@ -69,32 +69,38 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="image">New Image (optional)</label>
+                        <label for="image" translate>popup.projects.newimageoptional</label>
                         <input type="file" id="image" name="image" (change)="onImageSelected($event)"
                             [disabled]="!isLoggedIn" accept="image/*">
-                        <small *ngIf="selectedImage">Selected: {{ selectedImage.name }}</small>
-                        <small *ngIf="!selectedImage && project?.image">Current: {{ project.image }}</small>
+                        <small *ngIf="selectedImage">{{ 'popup.skills.selected' | translate:{ filename:
+                            selectedImage.name } }}</small>
+                        <small *ngIf="!selectedImage && project?.image">{{ 'popup.skills.current' | translate:{
+                            filename: project.image } }}</small>
                     </div>
                     <div class="form-group">
-                        <label for="video">New Video (optional)</label>
+                        <label for="video" translate>popup.projects.newvideooptional</label>
                         <input type="file" id="video" name="video" (change)="onVideoSelected($event)"
                             [disabled]="!isLoggedIn" accept="video/*">
-                        <small *ngIf="selectedVideo">Selected: {{ selectedVideo.name }}</small>
-                        <small *ngIf="!selectedVideo && project?.video">Current: {{ project.video }}</small>
+                        <small *ngIf="selectedVideo">{{ 'popup.skills.selected' | translate:{ filename:
+                            selectedVideo.name } }}</small>
+                        <small *ngIf="!selectedVideo && project?.video">{{ 'popup.skills.current' | translate:{
+                            filename: project.video } }}</small>
                     </div>
                 </div>
 
                 <div *ngIf="!isLoggedIn" class="login-warning">
-                    <p>⚠️ You must be logged in to edit projects.</p>
+                    <p translate>popup.projects.loginrequirededit</p>
                 </div>
 
                 <div *ngIf="error" class="error-message">{{ error }}</div>
                 <div *ngIf="success" class="success-message">{{ success }}</div>
 
                 <div class="form-actions">
-                    <button type="button" (click)="closePopup()" class="btn-cancel">Cancel</button>
+                    <button type="button" (click)="closePopup()" class="btn-cancel"
+                        translate>popup.common.cancel</button>
                     <button type="submit" [disabled]="!isLoggedIn || isSubmitting" class="btn-submit">
-                        {{ isSubmitting ? 'Updating...' : 'Update Project' }}
+                        {{ isSubmitting ? ('popup.projects.updating' | translate) : ('popup.projects.updateproject' |
+                        translate) }}
                     </button>
                 </div>
             </form>

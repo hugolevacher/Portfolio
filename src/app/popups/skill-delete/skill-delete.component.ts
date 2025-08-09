@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-skill-delete',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './skill-delete.component.html',
   styleUrl: './skill-delete.component.css'
 })
