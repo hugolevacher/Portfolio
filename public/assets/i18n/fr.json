@@ -24,7 +24,48 @@
     },
     "project": {
         "test": "Tester le projet à",
-        "code": "Code source à"
+        "code": "Code source à",
+        "notfound": "Projet non trouvé."
+    },
+    "portal": {
+        "apistatus": "Statut API",
+        "dbstatus": "Statut Base de Données",
+        "demomode": "Mode Démo",
+        "demomessage": "Explorez l'interface de gestion ! Vous pouvez visualiser et interagir avec toutes les fonctionnalités, mais les modifications ne seront pas sauvegardées sans authentification.",
+        "skillsmanagement": "Gestion des Compétences",
+        "projectsmanagement": "Gestion des Projets",
+        "createskill": "Créer une Compétence",
+        "createproject": "Créer un Projet",
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "login": "Connexion",
+        "logout": "Déconnexion",
+        "welcome": "Bienvenue, {{username}}",
+        "actions": "Actions"
+    },
+    "common": {
+        "loading": "Chargement en cours...",
+        "loadingskills": "Chargement des compétences...",
+        "loadingprojects": "Chargement des projets...",
+        "loadingproject": "Chargement du projet...",
+        "failedloadskills": "Échec du chargement des compétences",
+        "failedloadprojects": "Échec du chargement des projets",
+        "failedloadproject": "Échec du chargement du projet",
+        "loginfailed": "Échec de la connexion.",
+        "invalidroute": "Format de route de projet invalide",
+        "noimage": "Aucune image",
+        "noskills": "Aucune compétence disponible.",
+        "noprojects": "Aucun projet disponible.",
+        "noskillsfound": "Aucune compétence trouvée.",
+        "noprojectsfound": "Aucun projet trouvé.",
+        "id": "ID",
+        "name": "Nom",
+        "order": "Ordre",
+        "image": "Image",
+        "title": "Titre",
+        "description": "Description"
     },
     "data": {
         "projects": {

@@ -23,7 +23,7 @@
 
         <!-- Loading state -->
         <div *ngIf="skillsLoading" class="loading-message">
-            <p>Loading skills...</p>
+            <p translate>common.loadingskills</p>
         </div>
 
         <!-- Error state -->
@@ -42,7 +42,7 @@
 
         <!-- No skills message -->
         <div *ngIf="!skillsLoading && !skillsError && skills.length === 0" class="no-data-message">
-            <p>No skills available.</p>
+            <p translate>common.noskills</p>
         </div>
     </div>
 </section>
@@ -53,7 +53,7 @@
 
         <!-- Loading state -->
         <div *ngIf="projectsLoading" class="loading-message">
-            <p>Loading projects...</p>
+            <p translate>common.loadingprojects</p>
         </div>
 
         <!-- Error state -->
@@ -74,7 +74,7 @@
 
         <!-- No projects message -->
         <div *ngIf="!projectsLoading && !projectsError && projects.length === 0" class="no-data-message">
-            <p>No projects available.</p>
+            <p translate>common.noprojects</p>
         </div>
     </div>
 </section>

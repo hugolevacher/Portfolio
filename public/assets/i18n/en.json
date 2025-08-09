@@ -24,7 +24,48 @@
     },
     "project": {
         "test": "Test project at",
-        "code": "Source code at"
+        "code": "Source code at",
+        "notfound": "Project not found."
+    },
+    "portal": {
+        "apistatus": "API Status",
+        "dbstatus": "DB Status",
+        "demomode": "Demo Mode",
+        "demomessage": "Explore the management interface! You can view and interact with all features, but changes won't be saved without authentication.",
+        "skillsmanagement": "Skills Management",
+        "projectsmanagement": "Projects Management",
+        "createskill": "Create Skill",
+        "createproject": "Create Project",
+        "edit": "Edit",
+        "delete": "Delete",
+        "username": "Username",
+        "password": "Password",
+        "login": "Login",
+        "logout": "Logout",
+        "welcome": "Welcome, {{username}}",
+        "actions": "Actions"
+    },
+    "common": {
+        "loading": "Loading...",
+        "loadingskills": "Loading skills...",
+        "loadingprojects": "Loading projects...",
+        "loadingproject": "Loading project...",
+        "failedloadskills": "Failed to load skills",
+        "failedloadprojects": "Failed to load projects",
+        "failedloadproject": "Failed to load project",
+        "loginfailed": "Login failed.",
+        "invalidroute": "Invalid project route format",
+        "noimage": "No image",
+        "noskills": "No skills available.",
+        "noprojects": "No projects available.",
+        "noskillsfound": "No skills found.",
+        "noprojectsfound": "No projects found.",
+        "id": "ID",
+        "name": "Name",
+        "order": "Order",
+        "image": "Image",
+        "title": "Title",
+        "description": "Description"
     },
     "data": {
         "projects": {
