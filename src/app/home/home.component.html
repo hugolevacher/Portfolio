@@ -20,11 +20,29 @@
 <section id="skills" class="skills-section">
     <div class="card">
         <h1 translate>home.skills</h1>
-        <div class="skills-grid">
+
+        <!-- Loading state -->
+        <div *ngIf="skillsLoading" class="loading-message">
+            <p>Loading skills...</p>
+        </div>
+
+        <!-- Error state -->
+        <div *ngIf="skillsError && !skillsLoading" class="error-message">
+            <p>{{ skillsError }}</p>
+        </div>
+
+        <!-- Skills grid -->
+        <div *ngIf="!skillsLoading && !skillsError" class="skills-grid">
             <div class="skill-card" *ngFor="let skill of skills">
-                <img [src]="skill.logo" [alt]="skill.name" />
+                <img *ngIf="skill.filename" [src]="api.getImageUrl(skill.filename)" [alt]="skill.name" />
+                <div *ngIf="!skill.filename" class="no-image-placeholder">{{ skill.name.charAt(0) }}</div>
                 <p>{{ skill.name }}</p>
             </div>
+        </div>
+
+        <!-- No skills message -->
+        <div *ngIf="!skillsLoading && !skillsError && skills.length === 0" class="no-data-message">
+            <p>No skills available.</p>
         </div>
     </div>
 </section>
@@ -32,13 +50,31 @@
 <section id="projects" class="projects-section">
     <div class="card">
         <h1 translate>home.projects</h1>
-        <div class="projects-grid">
+
+        <!-- Loading state -->
+        <div *ngIf="projectsLoading" class="loading-message">
+            <p>Loading projects...</p>
+        </div>
+
+        <!-- Error state -->
+        <div *ngIf="projectsError && !projectsLoading" class="error-message">
+            <p>{{ projectsError }}</p>
+        </div>
+
+        <!-- Projects grid -->
+        <div *ngIf="!projectsLoading && !projectsError" class="projects-grid">
             <div class="project-card" *ngFor="let project of projects" [routerLink]="['/project', project.route]">
-                <img [src]="project.image" [alt]="project.title" />
-                <h2>{{ project.titlekey|translate }}</h2>
-                <p>{{ project.descriptionkey|translate }}</p>
+                <img *ngIf="project.image" [src]="api.getImageUrl(project.image)" [alt]="project.title" />
+                <div *ngIf="!project.image" class="no-image-placeholder-project">{{ project.title.charAt(0) }}</div>
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
                 <a class="learn-more-button" translate>home.learnmore</a>
             </div>
+        </div>
+
+        <!-- No projects message -->
+        <div *ngIf="!projectsLoading && !projectsError && projects.length === 0" class="no-data-message">
+            <p>No projects available.</p>
         </div>
     </div>
 </section>
@@ -70,7 +106,6 @@
                 <span translate>home.github</span>
             </a>
         </div>
-
     </div>
 </section>
 
