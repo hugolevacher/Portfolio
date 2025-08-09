@@ -13,16 +13,31 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'Portfolio';
   currentSection: string = '';
-  language: string = 'en';
+  language: string = 'fr';
   menuOpen = false;
   isSmallScreen = false;
   isRotating = false;
 
   constructor(private router: Router, public translator: TranslateService) {
-    const browserLang = translator.getBrowserLang();
-    this.language = browserLang && ['en', 'fr'].includes(browserLang) ? browserLang : 'en';
-    translator.setDefaultLang(this.language);
-    translator.use(this.language)
+    this.initializeLanguage();
+  }
+
+  private initializeLanguage() {
+    const savedLang = sessionStorage.getItem('language');
+    if (savedLang && ['en', 'fr'].includes(savedLang)) {
+      this.language = savedLang;
+    } else {
+      const browserLang = this.translator.getBrowserLang();
+      if (browserLang && ['en', 'fr'].includes(browserLang)) {
+        this.language = browserLang;
+      } else {
+        this.language = 'fr'; // Default to French
+      }
+      sessionStorage.setItem('language', this.language);
+    }
+
+    this.translator.setDefaultLang(this.language);
+    this.translator.use(this.language);
   }
 
   ngOnInit() {
@@ -68,6 +83,7 @@ export class AppComponent {
     } else {
       this.language = 'en'
     }
+    sessionStorage.setItem('language', this.language);
     this.translator.use(this.language);
   }
 
