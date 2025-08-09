@@ -134,16 +134,14 @@
     (skillDeleted)="onSkillDeleted()">
 </app-skill-delete>
 
-<!-- Projects Popups (will be created in next prompt) -->
-<!-- 
+<!-- Projects Popups -->
 <app-project-create *ngIf="showProjectCreate" (close)="onProjectPopupClosed()" (projectCreated)="onProjectCreated()">
 </app-project-create>
 
-<app-project-edit *ngIf="showProjectEdit && selectedProject" [project]="selectedProject" (close)="onProjectPopupClosed()"
-    (projectUpdated)="onProjectUpdated()">
+<app-project-edit *ngIf="showProjectEdit && selectedProject" [project]="selectedProject"
+    (close)="onProjectPopupClosed()" (projectUpdated)="onProjectUpdated()">
 </app-project-edit>
 
-<app-project-delete *ngIf="showProjectDelete && selectedProject" [project]="selectedProject" (close)="onProjectPopupClosed()"
-    (projectDeleted)="onProjectDeleted()">
+<app-project-delete *ngIf="showProjectDelete && selectedProject" [project]="selectedProject"
+    (close)="onProjectPopupClosed()" (projectDeleted)="onProjectDeleted()">
 </app-project-delete>
--->

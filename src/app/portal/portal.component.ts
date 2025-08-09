@@ -7,10 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { SkillCreateComponent } from '../popups/skill-create/skill-create.component';
 import { SkillEditComponent } from '../popups/skill-edit/skill-edit.component';
 import { SkillDeleteComponent } from '../popups/skill-delete/skill-delete.component';
+import { ProjectCreateComponent } from '../popups/project-create/project-create.component';
+import { ProjectEditComponent } from '../popups/project-edit/project-edit.component';
+import { ProjectDeleteComponent } from '../popups/project-delete/project-delete.component';
 
 @Component({
   selector: 'app-portal',
-  imports: [CommonModule, RouterModule, TranslateModule, FormsModule, SkillCreateComponent, SkillEditComponent, SkillDeleteComponent],
+  imports: [CommonModule, RouterModule, TranslateModule, FormsModule, SkillCreateComponent, SkillEditComponent, SkillDeleteComponent,
+    ProjectCreateComponent, ProjectEditComponent, ProjectDeleteComponent],
   templateUrl: './portal.component.html',
   styleUrl: './portal.component.css'
 })
