@@ -73,6 +73,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  private createRoute(title: string, id: number): string {
+    const titleRoute = title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+      .trim();
+    return `${id}-${titleRoute}`;
+  }
+
   async loadProjects(): Promise<void> {
     this.projectsLoading = true;
     this.projectsError = null;
@@ -80,7 +90,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       const projectsData = await this.api.getProjects(this.currentLanguage);
       this.projects = projectsData.map(project => ({
         ...project,
-        route: this.createRoute(project.title)
+        route: this.createRoute(project.title, project.id)
       }));
     } catch (error: any) {
       this.projectsError = error?.error?.message || error?.message || 'Failed to load projects';
@@ -88,15 +98,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     } finally {
       this.projectsLoading = false;
     }
-  }
-
-  private createRoute(title: string): string {
-    return title
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-      .replace(/\s+/g, '-') // Replace spaces with hyphens
-      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
-      .trim();
   }
 
   scrollToNextSection(): void {

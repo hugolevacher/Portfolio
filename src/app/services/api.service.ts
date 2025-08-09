@@ -117,6 +117,18 @@ export class ApiService {
     }
   }
 
+  async getProject(id: number, language: 'fr' | 'en' = 'en'): Promise<any> {
+    try {
+      return await lastValueFrom(
+        this.http.get<any>(`${API_DOMAIN}/projects/${id}`, {
+          params: { lang: language }
+        })
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async createProject(
     order: number,
     titleFr: string,

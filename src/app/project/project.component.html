@@ -1,20 +1,41 @@
-<div class="project-detail" *ngIf="project">
-    <h1>{{ project.titlekey|translate }}</h1>
+<!-- Loading state -->
+<div *ngIf="projectLoading" class="loading-message">
+    <p>Loading project...</p>
+</div>
+
+<!-- Error state -->
+<div *ngIf="projectError && !projectLoading" class="error-message">
+    <p>{{ projectError }}</p>
+</div>
+
+<!-- Project content -->
+<div class="project-detail" *ngIf="project && !projectLoading && !projectError">
+    <h1>{{ project.title }}</h1>
 
     <div class="media">
-        <video *ngIf="project.video" [src]="project.video" controls></video>
-        <img *ngIf="!project.video" [src]="project.image" [alt]="project.title" />
+        <video *ngIf="project.videoUrl" [src]="project.videoUrl" controls></video>
+        <img *ngIf="!project.videoUrl && project.imageUrl" [src]="project.imageUrl" [alt]="project.title" />
+        <div *ngIf="!project.videoUrl && !project.imageUrl" class="no-media-placeholder">
+            {{ project.title.charAt(0) }}
+        </div>
     </div>
 
-    <p *ngIf="project.projectURL" translate>
-        project.test <a [href]="project.projectURL" target="_blank">{{ project.projectURL }}</a>
+    <p *ngIf="project.projectUrl">
+        <span translate>project.test </span>
+        <a [href]="project.projectUrl" target="_blank">{{ project.projectUrl }}</a>
     </p>
 
-    <p *ngIf="project.githubRepo" translate>
-        project.code <a [href]="project.githubRepo" target="_blank">{{ project.githubRepo }}</a>
+    <p *ngIf="project.githubUrl">
+        <span translate>project.code </span>
+        <a [href]="project.githubUrl" target="_blank">{{ project.githubUrl }}</a>
     </p>
 
     <div class="project-text">
-        <p *ngFor="let paragraph of (project.textkey|translate)">{{ paragraph }}</p>
+        <p *ngFor="let paragraph of project.text.split('\n')" [innerHTML]="paragraph"></p>
     </div>
+</div>
+
+<!-- Not found state -->
+<div *ngIf="!project && !projectLoading && !projectError" class="not-found-message">
+    <p>Project not found.</p>
 </div>
