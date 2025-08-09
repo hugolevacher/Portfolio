@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { CacheService } from './cache.service';
 
 const API_DOMAIN = 'http://localhost:3000';
 
@@ -8,7 +9,10 @@ const API_DOMAIN = 'http://localhost:3000';
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private cache: CacheService
+  ) { }
 
   private getAuthHeaders(): HttpHeaders {
     const userData = sessionStorage.getItem('userData');
@@ -24,16 +28,34 @@ export class ApiService {
   }
 
   async getApiStatus(): Promise<any> {
+    const cacheKey = this.cache.getApiStatusKey();
+    const cached = this.cache.get(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
     try {
-      return await lastValueFrom(this.http.get<any>(`${API_DOMAIN}/health`));
+      const data = await lastValueFrom(this.http.get<any>(`${API_DOMAIN}/health`));
+      this.cache.set(cacheKey, data, 1 * 60 * 1000); // Cache for 1 minute
+      return data;
     } catch (error) {
       throw error;
     }
   }
 
   async getDbStatus(): Promise<any> {
+    const cacheKey = this.cache.getDbStatusKey();
+    const cached = this.cache.get(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
     try {
-      return await lastValueFrom(this.http.get<any>(`${API_DOMAIN}/health/db`));
+      const data = await lastValueFrom(this.http.get<any>(`${API_DOMAIN}/health/db`));
+      this.cache.set(cacheKey, data, 1 * 60 * 1000); // Cache for 1 minute
+      return data;
     } catch (error) {
       throw error;
     }
@@ -51,8 +73,17 @@ export class ApiService {
 
   // Skills API calls
   async getSkills(): Promise<any[]> {
+    const cacheKey = this.cache.getSkillsKey();
+    const cached = this.cache.get(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
     try {
-      return await lastValueFrom(this.http.get<any[]>(`${API_DOMAIN}/skills`));
+      const data = await lastValueFrom(this.http.get<any[]>(`${API_DOMAIN}/skills`));
+      this.cache.set(cacheKey, data);
+      return data;
     } catch (error) {
       throw error;
     }
@@ -65,11 +96,15 @@ export class ApiService {
       formData.append('order', order.toString());
       formData.append('file', file);
 
-      return await lastValueFrom(
+      const data = await lastValueFrom(
         this.http.post<any>(`${API_DOMAIN}/skills`, formData, {
           headers: this.getAuthHeaders()
         })
       );
+
+      // Invalidate skills cache
+      this.cache.invalidateSkillsCache();
+      return data;
     } catch (error) {
       throw error;
     }
@@ -82,11 +117,15 @@ export class ApiService {
       if (order !== undefined) formData.append('order', order.toString());
       if (file) formData.append('file', file);
 
-      return await lastValueFrom(
+      const data = await lastValueFrom(
         this.http.put<any>(`${API_DOMAIN}/skills/${id}`, formData, {
           headers: this.getAuthHeaders()
         })
       );
+
+      // Invalidate skills cache
+      this.cache.invalidateSkillsCache();
+      return data;
     } catch (error) {
       throw error;
     }
@@ -94,11 +133,15 @@ export class ApiService {
 
   async deleteSkill(id: number): Promise<any> {
     try {
-      return await lastValueFrom(
+      const data = await lastValueFrom(
         this.http.delete<any>(`${API_DOMAIN}/skills/${id}`, {
           headers: this.getAuthHeaders()
         })
       );
+
+      // Invalidate skills cache
+      this.cache.invalidateSkillsCache();
+      return data;
     } catch (error) {
       throw error;
     }
@@ -106,24 +149,42 @@ export class ApiService {
 
   // Projects API calls
   async getProjects(language: 'fr' | 'en' = 'en'): Promise<any[]> {
+    const cacheKey = this.cache.getProjectsKey(language);
+    const cached = this.cache.get(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
     try {
-      return await lastValueFrom(
+      const data = await lastValueFrom(
         this.http.get<any[]>(`${API_DOMAIN}/projects`, {
           params: { lang: language }
         })
       );
+      this.cache.set(cacheKey, data);
+      return data;
     } catch (error) {
       throw error;
     }
   }
 
   async getProject(id: number, language: 'fr' | 'en' = 'en'): Promise<any> {
+    const cacheKey = this.cache.getProjectKey(id, language);
+    const cached = this.cache.get(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
     try {
-      return await lastValueFrom(
+      const data = await lastValueFrom(
         this.http.get<any>(`${API_DOMAIN}/projects/${id}`, {
           params: { lang: language }
         })
       );
+      this.cache.set(cacheKey, data);
+      return data;
     } catch (error) {
       throw error;
     }
@@ -156,11 +217,15 @@ export class ApiService {
       if (image) formData.append('image', image);
       if (video) formData.append('video', video);
 
-      return await lastValueFrom(
+      const data = await lastValueFrom(
         this.http.post<any>(`${API_DOMAIN}/projects`, formData, {
           headers: this.getAuthHeaders()
         })
       );
+
+      // Invalidate projects cache for both languages
+      this.cache.invalidateProjectsCache();
+      return data;
     } catch (error) {
       throw error;
     }
@@ -194,11 +259,16 @@ export class ApiService {
       if (image) formData.append('image', image);
       if (video) formData.append('video', video);
 
-      return await lastValueFrom(
+      const data = await lastValueFrom(
         this.http.put<any>(`${API_DOMAIN}/projects/${id}`, formData, {
           headers: this.getAuthHeaders()
         })
       );
+
+      // Invalidate specific project cache and projects list cache
+      this.cache.invalidateProjectCache(id);
+      this.cache.invalidateProjectsCache();
+      return data;
     } catch (error) {
       throw error;
     }
@@ -206,11 +276,16 @@ export class ApiService {
 
   async deleteProject(id: number): Promise<any> {
     try {
-      return await lastValueFrom(
+      const data = await lastValueFrom(
         this.http.delete<any>(`${API_DOMAIN}/projects/${id}`, {
           headers: this.getAuthHeaders()
         })
       );
+
+      // Invalidate specific project cache and projects list cache
+      this.cache.invalidateProjectCache(id);
+      this.cache.invalidateProjectsCache();
+      return data;
     } catch (error) {
       throw error;
     }
@@ -218,5 +293,10 @@ export class ApiService {
 
   isLoggedIn(): boolean {
     return !!sessionStorage.getItem('userData');
+  }
+
+  // Method to clear all cache (useful for logout)
+  clearCache(): void {
+    this.cache.clear();
   }
 }
