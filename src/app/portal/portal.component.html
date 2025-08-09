@@ -30,8 +30,9 @@
     </div>
 </div>
 
-<div class="skills-section">
-    <div class="skills-header">
+<!-- Skills Management Section -->
+<div class="management-section">
+    <div class="section-header">
         <h2>Skills Management</h2>
         <button *ngIf="isLoggedIn" class="btn-create" (click)="openCreateSkill()">Create Skill</button>
     </div>
@@ -39,8 +40,8 @@
     <div *ngIf="skillsLoading" class="loading">Loading skills...</div>
     <div *ngIf="skillsError" class="error-message">{{ skillsError }}</div>
 
-    <div *ngIf="!skillsLoading && !skillsError" class="skills-table-container">
-        <table class="skills-table">
+    <div *ngIf="!skillsLoading && !skillsError" class="table-container">
+        <table class="data-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -51,13 +52,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let skill of skills" class="skill-row">
+                <tr *ngFor="let skill of skills" class="data-row">
                     <td>{{ skill.id }}</td>
                     <td>{{ skill.name }}</td>
                     <td>{{ skill.order }}</td>
                     <td>
                         <img *ngIf="skill.filename" [src]="api.getImageUrl(skill.filename)" [alt]="skill.name"
-                            class="skill-image">
+                            class="preview-image">
                         <span *ngIf="!skill.filename">No image</span>
                     </td>
                     <td *ngIf="isLoggedIn" class="actions">
@@ -68,20 +69,81 @@
             </tbody>
         </table>
 
-        <div *ngIf="skills.length === 0" class="no-skills">
+        <div *ngIf="skills.length === 0" class="no-data">
             No skills found.
         </div>
     </div>
 </div>
 
-<!-- Popups -->
-<app-skill-create *ngIf="showSkillCreate" (close)="onPopupClosed()" (skillCreated)="onSkillCreated()">
+<!-- Projects Management Section -->
+<div class="management-section">
+    <div class="section-header">
+        <h2>Projects Management</h2>
+        <button *ngIf="isLoggedIn" class="btn-create" (click)="openCreateProject()">Create Project</button>
+    </div>
+
+    <div *ngIf="projectsLoading" class="loading">Loading projects...</div>
+    <div *ngIf="projectsError" class="error-message">{{ projectsError }}</div>
+
+    <div *ngIf="!projectsLoading && !projectsError" class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Order</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th *ngIf="isLoggedIn">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of projects" class="data-row">
+                    <td>{{ project.id }}</td>
+                    <td>{{ project.order }}</td>
+                    <td>{{ project.title }}</td>
+                    <td class="description-cell">{{ project.description }}</td>
+                    <td>
+                        <img *ngIf="project.image" [src]="api.getImageUrl(project.image)" [alt]="project.title"
+                            class="preview-image">
+                        <span *ngIf="!project.image">No image</span>
+                    </td>
+                    <td *ngIf="isLoggedIn" class="actions">
+                        <button class="btn-edit" (click)="openEditProject(project)">Edit</button>
+                        <button class="btn-delete" (click)="openDeleteProject(project)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="projects.length === 0" class="no-data">
+            No projects found.
+        </div>
+    </div>
+</div>
+
+<!-- Skills Popups -->
+<app-skill-create *ngIf="showSkillCreate" (close)="onSkillPopupClosed()" (skillCreated)="onSkillCreated()">
 </app-skill-create>
 
-<app-skill-edit *ngIf="showSkillEdit && selectedSkill" [skill]="selectedSkill" (close)="onPopupClosed()"
+<app-skill-edit *ngIf="showSkillEdit && selectedSkill" [skill]="selectedSkill" (close)="onSkillPopupClosed()"
     (skillUpdated)="onSkillUpdated()">
 </app-skill-edit>
 
-<app-skill-delete *ngIf="showSkillDelete && selectedSkill" [skill]="selectedSkill" (close)="onPopupClosed()"
+<app-skill-delete *ngIf="showSkillDelete && selectedSkill" [skill]="selectedSkill" (close)="onSkillPopupClosed()"
     (skillDeleted)="onSkillDeleted()">
 </app-skill-delete>
+
+<!-- Projects Popups (will be created in next prompt) -->
+<!-- 
+<app-project-create *ngIf="showProjectCreate" (close)="onProjectPopupClosed()" (projectCreated)="onProjectCreated()">
+</app-project-create>
+
+<app-project-edit *ngIf="showProjectEdit && selectedProject" [project]="selectedProject" (close)="onProjectPopupClosed()"
+    (projectUpdated)="onProjectUpdated()">
+</app-project-edit>
+
+<app-project-delete *ngIf="showProjectDelete && selectedProject" [project]="selectedProject" (close)="onProjectPopupClosed()"
+    (projectDeleted)="onProjectDeleted()">
+</app-project-delete>
+-->

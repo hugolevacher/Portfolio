@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { SkillCreateComponent } from '../popups/skill-create/skill-create.component';
 import { SkillEditComponent } from '../popups/skill-edit/skill-edit.component';
@@ -23,16 +23,25 @@ export class PortalComponent implements OnInit {
   username = '';
   password = '';
 
+  // Skills management
   skills: any[] = [];
   skillsLoading = false;
   skillsError: string | null = null;
-
   showSkillCreate = false;
   showSkillEdit = false;
   showSkillDelete = false;
   selectedSkill: any = null;
 
-  constructor(public api: ApiService) {
+  // Projects management
+  projects: any[] = [];
+  projectsLoading = false;
+  projectsError: string | null = null;
+  showProjectCreate = false;
+  showProjectEdit = false;
+  showProjectDelete = false;
+  selectedProject: any = null;
+
+  constructor(public api: ApiService, private translateService: TranslateService) {
     this.loadSession();
   }
 
@@ -50,6 +59,11 @@ export class PortalComponent implements OnInit {
     }
 
     await this.loadSkills();
+    await this.loadProjects();
+  }
+
+  get currentLanguage(): 'fr' | 'en' {
+    return this.translateService.currentLang as 'fr' | 'en' || 'en';
   }
 
   async loadSkills() {
@@ -61,6 +75,18 @@ export class PortalComponent implements OnInit {
       this.skillsError = error?.error?.message || error?.message || 'Failed to load skills';
     } finally {
       this.skillsLoading = false;
+    }
+  }
+
+  async loadProjects() {
+    this.projectsLoading = true;
+    this.projectsError = null;
+    try {
+      this.projects = await this.api.getProjects(this.currentLanguage);
+    } catch (error: any) {
+      this.projectsError = error?.error?.message || error?.message || 'Failed to load projects';
+    } finally {
+      this.projectsLoading = false;
     }
   }
 
@@ -95,6 +121,7 @@ export class PortalComponent implements OnInit {
     return this.api.isLoggedIn();
   }
 
+  // Skills management methods
   openCreateSkill() {
     this.showSkillCreate = true;
   }
@@ -126,10 +153,49 @@ export class PortalComponent implements OnInit {
     this.loadSkills();
   }
 
-  onPopupClosed() {
+  onSkillPopupClosed() {
     this.showSkillCreate = false;
     this.showSkillEdit = false;
     this.showSkillDelete = false;
     this.selectedSkill = null;
+  }
+
+  // Projects management methods
+  openCreateProject() {
+    this.showProjectCreate = true;
+  }
+
+  openEditProject(project: any) {
+    this.selectedProject = project;
+    this.showProjectEdit = true;
+  }
+
+  openDeleteProject(project: any) {
+    this.selectedProject = project;
+    this.showProjectDelete = true;
+  }
+
+  onProjectCreated() {
+    this.showProjectCreate = false;
+    this.loadProjects();
+  }
+
+  onProjectUpdated() {
+    this.showProjectEdit = false;
+    this.selectedProject = null;
+    this.loadProjects();
+  }
+
+  onProjectDeleted() {
+    this.showProjectDelete = false;
+    this.selectedProject = null;
+    this.loadProjects();
+  }
+
+  onProjectPopupClosed() {
+    this.showProjectCreate = false;
+    this.showProjectEdit = false;
+    this.showProjectDelete = false;
+    this.selectedProject = null;
   }
 }
