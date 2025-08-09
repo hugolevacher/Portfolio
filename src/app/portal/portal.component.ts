@@ -70,6 +70,16 @@ export class PortalComponent implements OnInit {
     return this.translateService.currentLang as 'fr' | 'en' || 'en';
   }
 
+  getApiStatusClass(): string {
+    if (!this.apiStatus) return 'status-loading';
+    return this.apiStatus.error || this.apiStatus.status?.toLowerCase().includes('error') ? 'status-error' : 'status-success';
+  }
+
+  getDbStatusClass(): string {
+    if (!this.dbStatus) return 'status-loading';
+    return this.dbStatus.error || this.dbStatus.status?.toLowerCase().includes('error') ? 'status-error' : 'status-success';
+  }
+
   async loadSkills() {
     this.skillsLoading = true;
     this.skillsError = null;

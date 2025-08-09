@@ -1,19 +1,29 @@
 <div class="portal-status-container">
     <div class="status-box">
-        <strong>API Status</strong><br>
-        <span *ngIf="apiStatus">{{ apiStatus.status }}<br>
-            <small *ngIf="apiStatus.timestamp">{{ apiStatus.timestamp }}</small>
-            <span *ngIf="apiStatus.error" style="color:red;">{{ apiStatus.error }}</span>
-        </span>
-        <span *ngIf="!apiStatus">Loading...</span>
+        <div class="status-header">
+            <div class="status-indicator" [ngClass]="getApiStatusClass()"></div>
+            <strong>API Status</strong>
+        </div>
+        <div class="status-content">
+            <span *ngIf="apiStatus">{{ apiStatus.status }}<br>
+                <small *ngIf="apiStatus.timestamp">{{ apiStatus.timestamp }}</small>
+                <span *ngIf="apiStatus.error" class="error-text">{{ apiStatus.error }}</span>
+            </span>
+            <span *ngIf="!apiStatus" class="loading-text">Loading...</span>
+        </div>
     </div>
     <div class="status-box">
-        <strong>DB Status</strong><br>
-        <span *ngIf="dbStatus">{{ dbStatus.status }}<br>
-            <small *ngIf="dbStatus.timestamp">{{ dbStatus.timestamp }}</small>
-            <span *ngIf="dbStatus.error" style="color:red;">{{ dbStatus.error }}</span>
-        </span>
-        <span *ngIf="!dbStatus">Loading...</span>
+        <div class="status-header">
+            <div class="status-indicator" [ngClass]="getDbStatusClass()"></div>
+            <strong>DB Status</strong>
+        </div>
+        <div class="status-content">
+            <span *ngIf="dbStatus">{{ dbStatus.status }}<br>
+                <small *ngIf="dbStatus.timestamp">{{ dbStatus.timestamp }}</small>
+                <span *ngIf="dbStatus.error" class="error-text">{{ dbStatus.error }}</span>
+            </span>
+            <span *ngIf="!dbStatus" class="loading-text">Loading...</span>
+        </div>
     </div>
 </div>
 
@@ -30,11 +40,21 @@
     </div>
 </div>
 
+<!-- Fun message for non-logged users -->
+<div *ngIf="!isLoggedIn" class="demo-notice">
+    <div class="demo-header">
+        <span class="demo-icon">🎯</span>
+        <h3>Demo Mode</h3>
+    </div>
+    <p>Explore the management interface! You can view and interact with all features, but changes won't be saved without
+        authentication.</p>
+</div>
+
 <!-- Skills Management Section -->
 <div class="management-section">
     <div class="section-header">
         <h2>Skills Management</h2>
-        <button *ngIf="isLoggedIn" class="btn-create" (click)="openCreateSkill()">Create Skill</button>
+        <button class="btn-create" (click)="openCreateSkill()">Create Skill</button>
     </div>
 
     <div *ngIf="skillsLoading" class="loading">Loading skills...</div>
@@ -48,7 +68,7 @@
                     <th>Name</th>
                     <th>Order</th>
                     <th>Image</th>
-                    <th *ngIf="isLoggedIn">Actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,7 +81,7 @@
                             class="preview-image">
                         <span *ngIf="!skill.filename">No image</span>
                     </td>
-                    <td *ngIf="isLoggedIn" class="actions">
+                    <td class="actions">
                         <button class="btn-edit" (click)="openEditSkill(skill)">Edit</button>
                         <button class="btn-delete" (click)="openDeleteSkill(skill)">Delete</button>
                     </td>
@@ -79,7 +99,7 @@
 <div class="management-section">
     <div class="section-header">
         <h2>Projects Management</h2>
-        <button *ngIf="isLoggedIn" class="btn-create" (click)="openCreateProject()">Create Project</button>
+        <button class="btn-create" (click)="openCreateProject()">Create Project</button>
     </div>
 
     <div *ngIf="projectsLoading" class="loading">Loading projects...</div>
@@ -94,7 +114,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Image</th>
-                    <th *ngIf="isLoggedIn">Actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -108,7 +128,7 @@
                             class="preview-image">
                         <span *ngIf="!project.image">No image</span>
                     </td>
-                    <td *ngIf="isLoggedIn" class="actions">
+                    <td class="actions">
                         <button class="btn-edit" (click)="openEditProject(project)">Edit</button>
                         <button class="btn-delete" (click)="openDeleteProject(project)">Delete</button>
                     </td>

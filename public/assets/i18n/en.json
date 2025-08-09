@@ -3,7 +3,8 @@
         "aboutme": "About Me",
         "skills": "Skills",
         "projects": "Projects",
-        "contact": "Contact"
+        "contact": "Contact",
+        "hub": "Hub"
     },
     "home": {
         "hi": "Hello, I'm Hugo",

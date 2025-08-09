@@ -13,6 +13,7 @@
             [class.active]="currentSection === 'projects'" translate>app.projects</a></li>
         <li><a href="#contact" (click)="scrollToSection($event, 'contact')"
             [class.active]="currentSection === 'contact'" translate>app.contact</a></li>
+        <li><a routerLink="/hub" routerLinkActive="active" translate>app.hub</a></li>
       </ul>
       <button class="hamburger" (click)="toggleMenu()" [ngClass]="{'rotate':isRotating}">
         {{ menuOpen ? '✖' : '☰' }}

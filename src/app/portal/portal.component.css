@@ -1,3 +1,4 @@
+/* Status Container */
 .portal-status-container {
     display: flex;
     gap: 2rem;
@@ -15,25 +16,113 @@
     min-width: 250px;
     text-align: center;
     border: 1px solid #00bcd4;
+    position: relative;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-success {
+    background-color: #4caf50;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.5);
+}
+
+.status-error {
+    background-color: #f44336;
+    box-shadow: 0 0 6px rgba(244, 67, 54, 0.5);
+}
+
+.status-loading {
+    background-color: #ff9800;
+    box-shadow: 0 0 6px rgba(255, 152, 0, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .status-box strong {
     color: #00bcd4;
     font-size: 1.2rem;
-    display: block;
-    margin-bottom: 1rem;
+    margin: 0;
 }
 
-.status-box small {
+.status-content {
+    color: #333;
+}
+
+.status-content small {
     color: #666;
     font-size: 0.8rem;
 }
 
-.status-box [style*="color:red"] {
+.error-text {
     color: #e53935 !important;
     font-weight: bold;
 }
 
+.loading-text {
+    color: #666;
+    font-style: italic;
+}
+
+/* Demo Notice */
+.demo-notice {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #00bcd4;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
+}
+
+.demo-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.demo-icon {
+    font-size: 1.5rem;
+}
+
+.demo-notice h3 {
+    color: #00bcd4;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.demo-notice p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Login Section */
 .portal-login-section {
     width: fit-content;
     margin: 2rem auto;
@@ -110,7 +199,7 @@
     margin-top: 0.5rem;
 }
 
-/* Common styles for both sections */
+/* Management Sections */
 .management-section {
     max-width: 1200px;
     margin: 2rem auto;
@@ -239,17 +328,24 @@
     padding: 2rem;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .portal-status-container {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+        margin: 1rem;
     }
 
     .status-box {
         width: 100%;
         max-width: 350px;
         min-width: auto;
+    }
+
+    .demo-notice {
+        margin: 1rem;
+        padding: 1.5rem;
     }
 
     .login-form {
