@@ -62,9 +62,11 @@ export class ApiService {
   }
 
   async login(username: string, password: string): Promise<any> {
+    const dto = { username: username, password: password };
+    console.log('Login attempt with:', dto);
     try {
       return await lastValueFrom(
-        this.http.post<any>(`${API_DOMAIN}/auth/login`, { username, password })
+        this.http.post<any>(`${API_DOMAIN}/auth/login`, dto)
       );
     } catch (error) {
       throw error;
