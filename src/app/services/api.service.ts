@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { CacheService } from './cache.service';
 
-const API_DOMAIN = 'http://localhost:3000';
+const API_DOMAIN = 'https://api.hugolevacher.com';
 
 @Injectable({
   providedIn: 'root'
