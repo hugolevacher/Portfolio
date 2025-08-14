@@ -3,7 +3,8 @@
         "aboutme": "About Me",
         "skills": "Skills",
         "projects": "Projects",
-        "contact": "Contact"
+        "contact": "Contact",
+        "hub": "Hub"
     },
     "home": {
         "hi": "Hello, I'm Hugo",
@@ -23,36 +24,124 @@
     },
     "project": {
         "test": "Test project at",
-        "code": "Source code at"
+        "code": "Source code at",
+        "notfound": "Project not found."
     },
-    "data": {
+    "portal": {
+        "apistatus": "API Status",
+        "dbstatus": "DB Status",
+        "demomode": "Demo Mode",
+        "demomessage": "Explore the management interface! You can view and interact with all features, but changes won't be saved without authentication.",
+        "skillsmanagement": "Skills Management",
+        "projectsmanagement": "Projects Management",
+        "createskill": "Create Skill",
+        "createproject": "Create Project",
+        "edit": "Edit",
+        "delete": "Delete",
+        "username": "Username",
+        "password": "Password",
+        "login": "Login",
+        "logout": "Logout",
+        "welcome": "Welcome, {{username}}",
+        "actions": "Actions"
+    },
+    "popup": {
+        "skills": {
+            "create": "Create New Skill",
+            "edit": "Edit Skill",
+            "delete": "Delete Skill",
+            "skillname": "Skill Name",
+            "skillnamerequired": "Skill Name *",
+            "logoicon": "Logo/Icon",
+            "logoidrequired": "Logo/Icon *",
+            "newlogoicon": "New Logo/Icon (optional)",
+            "selected": "Selected: {{filename}}",
+            "current": "Current: {{filename}}",
+            "confirmdelete": "Are you sure you want to delete this skill?",
+            "creating": "Creating...",
+            "createskill": "Create Skill",
+            "updating": "Updating...",
+            "updateskill": "Update Skill",
+            "deleting": "Deleting...",
+            "created": "Skill created successfully!",
+            "updated": "Skill updated successfully!",
+            "loginrequiredcreate": "You must be logged in to create skills.",
+            "loginrequirededit": "You must be logged in to edit skills.",
+            "loginrequireddelete": "You must be logged in to delete skills.",
+            "namerequired": "Name is required.",
+            "imagerequired": "Image is required.",
+            "failedcreate": "Failed to create skill.",
+            "failedupdate": "Failed to update skill.",
+            "faileddelete": "Failed to delete skill."
+        },
         "projects": {
-            "choculaterie": {
-                "title": "choculaterie.com",
-                "description": "An online space where users can publish and download Minecraft creations.",
-                "text": [
-                    "The Choculaterie is a space for Minecraft players to share their creations with other users. The website allows users to upload as soon as they create an account and always allows them to download. Registered users can also mark creations and other users as favorites to stay up to date with their favorite creators.",
-                    "This website was made in collaboration with a friend. I was mostly in charge of the backend development using JavaScript, C#, ASP .NET and Microsoft Entity Framework. I built the controllers and classes necessary for the registration of users as well as the requests to the server to get the correct information.",
-                    "Making this project, I learned how to securely manage user data and how to optimize requests to minimize server load and improve performance."
-                ]
-            },
-            "mathgame": {
-                "title": "Math game",
-                "description": "A fun and interactive math game for kids to learn basic arithmetic.",
-                "text": [
-                    "This website is a simple math game for kids to learn basic arithmetic (+-X÷). The website offers 3 difficulties and 2 game modes , the infinite mode, where you try and see how far you can go and the learning mode, where you choose the number of questions and try to get the best score in %.",
-                    "This website was made for my cousin, who was struggling with math. The game made him more motivated to work, so I am proud that my project helped him.",
-                    "This project was made only using JavaScript, HTML and CSS."
-                ]
-            },
-            "secretmessage": {
-                "title": "Secret message",
-                "description": "An app that allows users to encrypt and decrypt secret messages using AES encryption.",
-                "text": [
-                    "I made this AES encryption project to send funny messages to my friends and make them work to find the messages. That's it.",
-                    "This project was made using C# and .NET Core. The encryption uses a randomized salt every time, so the same message will not return the same encryption string. It helped me research and understand different encryption methods and I discovered that the world of cryptography was more interesting than I thought."
-                ]
-            }
+            "create": "Create New Project",
+            "edit": "Edit Project",
+            "delete": "Delete Project",
+            "titlefr": "Title (French)",
+            "titleen": "Title (English)",
+            "titlefrrequired": "Title (French) *",
+            "titleenrequired": "Title (English) *",
+            "descriptionfr": "Description (French)",
+            "descriptionen": "Description (English)",
+            "descriptionfrrequired": "Description (French) *",
+            "descriptionenrequired": "Description (English) *",
+            "textfr": "Text (French)",
+            "texten": "Text (English)",
+            "textfrrequired": "Text (French) *",
+            "textenrequired": "Text (English) *",
+            "projecturl": "Project URL",
+            "githuburl": "GitHub URL",
+            "imageoptional": "Image (optional)",
+            "videooptional": "Video (optional)",
+            "newimageoptional": "New Image (optional)",
+            "newvideooptional": "New Video (optional)",
+            "confirmdelete": "Are you sure you want to delete this project?",
+            "creating": "Creating...",
+            "createproject": "Create Project",
+            "updating": "Updating...",
+            "updateproject": "Update Project",
+            "deleting": "Deleting...",
+            "created": "Project created successfully!",
+            "updated": "Project updated successfully!",
+            "loginrequiredcreate": "You must be logged in to create projects.",
+            "loginrequirededit": "You must be logged in to edit projects.",
+            "loginrequireddelete": "You must be logged in to delete projects.",
+            "titlesbothrequired": "Both French and English titles are required.",
+            "descriptionsbothrequired": "Both French and English descriptions are required.",
+            "textsbothrequired": "Both French and English texts are required.",
+            "failedcreate": "Failed to create project.",
+            "failedupdate": "Failed to update project.",
+            "faileddelete": "Failed to delete project."
+        },
+        "common": {
+            "close": "×",
+            "cancel": "Cancel",
+            "delete": "Delete",
+            "orderrequired": "Order *",
+            "loginwarning": "⚠️ You must be logged in to {{action}}."
         }
+    },
+    "common": {
+        "loading": "Loading...",
+        "loadingskills": "Loading skills...",
+        "loadingprojects": "Loading projects...",
+        "loadingproject": "Loading project...",
+        "failedloadskills": "Failed to load skills",
+        "failedloadprojects": "Failed to load projects",
+        "failedloadproject": "Failed to load project",
+        "loginfailed": "Login failed.",
+        "invalidroute": "Invalid project route format",
+        "noimage": "No image",
+        "noskills": "No skills available.",
+        "noprojects": "No projects available.",
+        "noskillsfound": "No skills found.",
+        "noprojectsfound": "No projects found.",
+        "id": "ID",
+        "name": "Name",
+        "order": "Order",
+        "image": "Image",
+        "title": "Title",
+        "description": "Description"
     }
 }

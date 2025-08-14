@@ -3,7 +3,8 @@
         "aboutme": "À propos",
         "skills": "Compétences",
         "projects": "Projets",
-        "contact": "Contact"
+        "contact": "Contact",
+        "hub": "Hub"
     },
     "home": {
         "hi": "Bonjour, je suis Hugo",
@@ -23,36 +24,124 @@
     },
     "project": {
         "test": "Tester le projet à",
-        "code": "Code source à"
+        "code": "Code source à",
+        "notfound": "Projet non trouvé."
     },
-    "data": {
+    "portal": {
+        "apistatus": "Statut API",
+        "dbstatus": "Statut Base de Données",
+        "demomode": "Mode Démo",
+        "demomessage": "Explorez l'interface de gestion ! Vous pouvez visualiser et interagir avec toutes les fonctionnalités, mais les modifications ne seront pas sauvegardées sans authentification.",
+        "skillsmanagement": "Gestion des Compétences",
+        "projectsmanagement": "Gestion des Projets",
+        "createskill": "Créer une Compétence",
+        "createproject": "Créer un Projet",
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "login": "Connexion",
+        "logout": "Déconnexion",
+        "welcome": "Bienvenue, {{username}}",
+        "actions": "Actions"
+    },
+    "popup": {
+        "skills": {
+            "create": "Créer une Nouvelle Compétence",
+            "edit": "Modifier la Compétence",
+            "delete": "Supprimer la Compétence",
+            "skillname": "Nom de la Compétence",
+            "skillnamerequired": "Nom de la Compétence *",
+            "logoicon": "Logo/Icône",
+            "logoidrequired": "Logo/Icône *",
+            "newlogoicon": "Nouveau Logo/Icône (optionnel)",
+            "selected": "Sélectionné: {{filename}}",
+            "current": "Actuel: {{filename}}",
+            "confirmdelete": "Êtes-vous sûr de vouloir supprimer cette compétence ?",
+            "creating": "Création...",
+            "createskill": "Créer la Compétence",
+            "updating": "Mise à jour...",
+            "updateskill": "Mettre à jour la Compétence",
+            "deleting": "Suppression...",
+            "created": "Compétence créée avec succès !",
+            "updated": "Compétence mise à jour avec succès !",
+            "loginrequiredcreate": "Vous devez être connecté pour créer des compétences.",
+            "loginrequirededit": "Vous devez être connecté pour modifier des compétences.",
+            "loginrequireddelete": "Vous devez être connecté pour supprimer des compétences.",
+            "namerequired": "Le nom est requis.",
+            "imagerequired": "L'image est requise.",
+            "failedcreate": "Échec de la création de la compétence.",
+            "failedupdate": "Échec de la mise à jour de la compétence.",
+            "faileddelete": "Échec de la suppression de la compétence."
+        },
         "projects": {
-            "choculaterie": {
-                "title": "choculaterie.com",
-                "description": "Un espace en ligne où les utilisateurs peuvent publier et télécharger des créations Minecraft.",
-                "text": [
-                    "La Choculaterie est un espace où les joueurs de Minecraft peuvent partager leurs créations avec d'autres utilisateurs. Le site web permet aux utilisateurs de publier dès la création de leur compte et de télécharger en tout temps. Les utilisateurs inscrits peuvent également ajouter des créations et des utilisateurs à leurs favoris pour rester à jour avec leurs créateurs préférés.",
-                    "Ce site web a été réalisé en collaboration avec un ami. J'étais principalement en charge du développement back-end avec JavaScript, C#, ASP .NET et Microsoft Entity Framework. J'ai créé les contrôleurs et les classes nécessaires à l'inscription des utilisateurs, ainsi qu'aux requêtes vers le serveur pour obtenir les informations correctes.",
-                    "En réalisant ce projet, j'ai appris à gérer les données des utilisateurs de façon sécuritaire et à optimiser les requêtes pour minimiser la charge du serveur et améliorer les performances."
-                ]
-            },
-            "mathgame": {
-                "title": "Jeu de math",
-                "description": "Un jeu de math amusant pour que les enfants apprennent l'arithmétique de base.",
-                "text": [
-                    "Ce site web est un jeu de math simple pour les enfants, leur permettant d'apprendre l'arithmétique de base (+-X÷). Il propose trois niveaux de difficulté et deux modes de jeu : le mode infini, où vous essayez de voir jusqu'où vous pouvez aller, et le mode apprentissage, où vous choisissez le nombre de questions et essayez d'obtenir le meilleur score en %.",
-                    "Ce site web a été créé pour mon cousin qui avait des difficultés en mathématiques. Le jeu l'a motivé à travailler, je suis donc fier que mon projet l'ait aidé.",
-                    "Ce projet a été réalisé en utilisant uniquement JavaScript, HTML et CSS."
-                ]
-            },
-            "secretmessage": {
-                "title": "Message secret",
-                "description": "Une application qui permet aux utilisateurs de crypter et de décrypter des messages secrets à l'aide du cryptage AES.",
-                "text": [
-                    "J'ai créé ce projet de cryptage AES pour envoyer des messages amusants à mes amis et les forcer à travailler pour les lire. C'est tout.",
-                    "Ce projet a été réalisé en C# et .NET Core. Le chiffrement utilise un salt aléatoire à chaque fois, de sorte qu'un même message ne retourne pas la même chaîne de chiffrement. Cela m'a permis de rechercher et de comprendre différentes méthodes de chiffrement et j'ai découvert que le monde de la cryptographie était plus intéressant que je ne le pensais."
-                ]
-            }
+            "create": "Créer un Nouveau Projet",
+            "edit": "Modifier le Projet",
+            "delete": "Supprimer le Projet",
+            "titlefr": "Titre (Français)",
+            "titleen": "Titre (Anglais)",
+            "titlefrrequired": "Titre (Français) *",
+            "titleenrequired": "Titre (Anglais) *",
+            "descriptionfr": "Description (Français)",
+            "descriptionen": "Description (Anglais)",
+            "descriptionfrrequired": "Description (Français) *",
+            "descriptionenrequired": "Description (Anglais) *",
+            "textfr": "Texte (Français)",
+            "texten": "Texte (Anglais)",
+            "textfrrequired": "Texte (Français) *",
+            "textenrequired": "Texte (Anglais) *",
+            "projecturl": "URL du Projet",
+            "githuburl": "URL GitHub",
+            "imageoptional": "Image (optionnel)",
+            "videooptional": "Vidéo (optionnel)",
+            "newimageoptional": "Nouvelle Image (optionnel)",
+            "newvideooptional": "Nouvelle Vidéo (optionnel)",
+            "confirmdelete": "Êtes-vous sûr de vouloir supprimer ce projet ?",
+            "creating": "Création...",
+            "createproject": "Créer le Projet",
+            "updating": "Mise à jour...",
+            "updateproject": "Mettre à jour le Projet",
+            "deleting": "Suppression...",
+            "created": "Projet créé avec succès !",
+            "updated": "Projet mis à jour avec succès !",
+            "loginrequiredcreate": "Vous devez être connecté pour créer des projets.",
+            "loginrequirededit": "Vous devez être connecté pour modifier des projets.",
+            "loginrequireddelete": "Vous devez être connecté pour supprimer des projets.",
+            "titlesbothrequired": "Les titres français et anglais sont requis.",
+            "descriptionsbothrequired": "Les descriptions française et anglaise sont requises.",
+            "textsbothrequired": "Les textes français et anglais sont requis.",
+            "failedcreate": "Échec de la création du projet.",
+            "failedupdate": "Échec de la mise à jour du projet.",
+            "faileddelete": "Échec de la suppression du projet."
+        },
+        "common": {
+            "close": "×",
+            "cancel": "Annuler",
+            "delete": "Supprimer",
+            "orderrequired": "Ordre *",
+            "loginwarning": "⚠️ Vous devez être connecté pour {{action}}."
         }
+    },
+    "common": {
+        "loading": "Chargement en cours...",
+        "loadingskills": "Chargement des compétences...",
+        "loadingprojects": "Chargement des projets...",
+        "loadingproject": "Chargement du projet...",
+        "failedloadskills": "Échec du chargement des compétences",
+        "failedloadprojects": "Échec du chargement des projets",
+        "failedloadproject": "Échec du chargement du projet",
+        "loginfailed": "Échec de la connexion.",
+        "invalidroute": "Format de route de projet invalide",
+        "noimage": "Aucune image",
+        "noskills": "Aucune compétence disponible.",
+        "noprojects": "Aucun projet disponible.",
+        "noskillsfound": "Aucune compétence trouvée.",
+        "noprojectsfound": "Aucun projet trouvé.",
+        "id": "ID",
+        "name": "Nom",
+        "order": "Ordre",
+        "image": "Image",
+        "title": "Titre",
+        "description": "Description"
     }
 }
