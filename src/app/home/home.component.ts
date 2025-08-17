@@ -100,6 +100,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Calculate dynamic min-height for projects section
+  get projectsSectionMinHeight(): string {
+    const projectsPerRow = 3;
+    const numberOfRows = Math.ceil(this.projects.length / projectsPerRow);
+
+    const baseHeight = 100;
+    const additionalHeightPerRow = 45;
+
+    const totalHeight = baseHeight + (numberOfRows - 1) * additionalHeightPerRow;
+    return `${totalHeight}vh`;
+  }
+
   scrollToNextSection(): void {
     const currentScroll = window.scrollY;
     const nextSection = this.sections.find(section => section.offsetTop > currentScroll + 10);
