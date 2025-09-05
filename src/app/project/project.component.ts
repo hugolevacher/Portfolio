@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-project',
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, MarkdownModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })

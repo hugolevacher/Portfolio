@@ -31,7 +31,7 @@
     </p>
 
     <div class="project-text">
-        <p *ngFor="let paragraph of project.text.split('\n')" [innerHTML]="paragraph"></p>
+        <markdown [data]="project.text"></markdown>
     </div>
 </div>
 

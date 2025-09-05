@@ -46,22 +46,58 @@
     font-size: 1rem;
     color: #333;
     margin-bottom: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .project-detail a {
     color: #007c91;
     text-decoration: none;
     font-weight: bold;
+    word-break: break-all;
 }
 
 .project-detail a:hover {
     color: #00bcd4;
 }
 
-.project-text p {
+.project-text ::ng-deep p {
     text-align: left;
     margin-bottom: 1rem;
     line-height: 1.6;
+}
+
+/* Markdown headings with same style as project title */
+.project-text ::ng-deep h1,
+.project-text ::ng-deep h2,
+.project-text ::ng-deep h3 {
+    color: #00bcd4;
+    text-align: left;
+}
+
+/* Markdown links with same style as project links */
+.project-text ::ng-deep a {
+    color: #007c91;
+    text-decoration: none;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.project-text ::ng-deep a:hover {
+    color: #00bcd4;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .project-detail {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .project-detail h1 {
+        font-size: 2rem;
+    }
 }
 
 /* Loading and error message styles */
@@ -100,4 +136,8 @@
     text-align: center;
     color: #666;
     font-style: italic;
+}
+
+span {
+    color: black;
 }
