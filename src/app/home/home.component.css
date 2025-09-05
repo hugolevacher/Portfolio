@@ -79,8 +79,12 @@
 
 .card p {
     font-size: 1rem;
-    color: #333;
     line-height: 1.6;
+}
+
+.about-section p {
+    text-align: justify;
+    text-align-last: center;
 }
 
 .skills-section {
@@ -165,7 +169,6 @@
 
 .contact-section p {
     font-size: 1rem;
-    color: #333;
     margin-bottom: 2rem;
 }
 
@@ -263,7 +266,6 @@
 
 .project-card p {
     font-size: 1rem;
-    color: #333;
     line-height: 1.4;
 }
 

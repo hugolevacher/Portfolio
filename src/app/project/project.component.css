@@ -63,12 +63,11 @@
 }
 
 .project-text ::ng-deep p {
-    text-align: left;
+    text-align: justify;
     margin-bottom: 1rem;
     line-height: 1.6;
 }
 
-/* Markdown headings with same style as project title */
 .project-text ::ng-deep h1,
 .project-text ::ng-deep h2,
 .project-text ::ng-deep h3 {
@@ -76,7 +75,6 @@
     text-align: left;
 }
 
-/* Markdown links with same style as project links */
 .project-text ::ng-deep a {
     color: #007c91;
     text-decoration: none;
@@ -88,7 +86,6 @@
     color: #00bcd4;
 }
 
-/* Responsive improvements */
 @media (max-width: 768px) {
     .project-detail {
         margin: 1rem;
@@ -100,7 +97,6 @@
     }
 }
 
-/* Loading and error message styles */
 .loading-message {
     max-width: 800px;
     margin: 2rem auto;
